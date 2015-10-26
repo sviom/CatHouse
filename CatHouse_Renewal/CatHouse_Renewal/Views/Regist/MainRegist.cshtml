@@ -1,0 +1,54 @@
+﻿<!DOCTYPE html>
+
+<html>
+<head>
+    <title></title>
+
+    <meta charset="UTF-8" />
+
+    <script src="//code.jquery.com/jquery-1.11.3.min.js"></script>
+    <script src="//code.jquery.com/jquery-migrate-1.2.1.min.js"></script>
+
+    <link rel="stylesheet" type="text/css" href="~/Contents/common.css" />
+    <link rel="stylesheet" type="text/css" href="~/Contents/regist.css" />
+
+    <script src="~/Contents/common.js"></script>
+
+</head>
+<body>
+    <!--Header Include-->
+    @{Html.RenderPartial("header");}
+
+    <section id="visual"> <img src="~/Contents/Image/speechBalloon.png" /> 고양이를 좋아하는 당신, <span style="font-weight: bold;">환영합니다.</span> </section>
+    </header>
+
+    <section id="contents">
+        <div class="box1">
+            <span class="title">회원등록</span>
+            <div id="box_registGeneral" class="innerBox1">
+                <span class="innerTitle">일반회원</span>
+                고양이를 맡기실 분
+                @*<button class="btn btn_blue">일반회원등록</button>*@
+                <button class="btn btn_dark" title="일반회원등록" onclick="location.href='@Url.Action("MemberRegist", "Regist", new { @class="btn btn_dark" })'">일반회원등록</button>
+            </div>
+            <div id="box_registHouse" class="innerBox1">
+                <span class="innerTitle">업체회원</span>
+                방을 제공하실 분
+                @*<button class="btn btn_blue">업체회원등록</button>*@
+                <button class="btn btn_dark" title="업체회원등록" onclick="location.href='@Url.Action("TraderRegist", "Regist", new { @class="btn btn_dark" })'">업체회원등록</button>
+            </div>
+        </div>
+        <div class="box2">
+            <span class="title">고양이 등록</span>
+            <div id="box_registCat" class="innerBox2">
+                고양이를 등록하실 분
+                @*<button class="btn btn_dark">고양이 등록</button>*@
+                <button class="btn btn_dark" title="고양이 등록" onclick="location.href='@Url.Action("CatRegist", "Regist", new { @class="btn btn_dark" })'">고양이 등록</button>
+            </div>
+        </div>
+    </section>
+
+    <!--Footer Include-->
+    @{Html.RenderPartial("footer");}
+</body>
+</html>

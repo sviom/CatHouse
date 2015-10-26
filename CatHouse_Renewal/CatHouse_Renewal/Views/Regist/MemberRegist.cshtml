@@ -1,0 +1,37 @@
+﻿<!DOCTYPE html>
+
+<html>
+<head>
+    <title></title>
+
+    <script src="//code.jquery.com/jquery-1.11.3.min.js"></script>
+    <script src="//code.jquery.com/jquery-migrate-1.2.1.min.js"></script>
+
+    <link rel="stylesheet" type="text/css" href="~/Contents/common.css" />
+    <link rel="stylesheet" type="text/css" href="~/Contents/registSub.css" />
+
+    <script src="~/Contents/common.js"></script>
+
+</head>
+<body>
+    <!--Header Include-->
+    @{Html.RenderPartial("header");}
+
+    <section id="visual"> <img src="~/Contents/Image/speechBalloon.png" /> 고양이를 좋아하는 당신, <span style="font-weight: bold;">환영합니다.</span> </section>
+    </header>
+
+    <section id="contents">
+        <form class="pt10 pb10 mb20">
+            <p><span class="formLabel">이름</span><input type="text" class="formInput t2" /></p>
+            <p><span class="formLabel">이메일</span><input type="email" class="formInput t2" /></p>
+            <p><span class="formLabel">전화번호</span><input type="tel" class="formInput t2" /></p>
+            <p><span class="formLabel">집주소</span><input type="text" class="formInput t4" /></p>
+            <p><span class="formLabel">비밀번호</span><input type="password" class="formInput t2" /></p>
+        </form>
+        <button id="btn_regist" class="btn btn_blue">회원등록</button>
+    </section>
+
+    <!--Footer Include-->
+    @{Html.RenderPartial("footer");}
+</body>
+</html>

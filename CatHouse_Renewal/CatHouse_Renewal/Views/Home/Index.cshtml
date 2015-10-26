@@ -16,7 +16,7 @@
 <body>
     <!--Header Include-->
     @{Html.RenderPartial("header");}
-        <section id="visual"> <img src="~/Contents/Image/mainText.png" /> </section>
+    <section id="visual"> <img src="~/Contents/Image/mainText.png" /> </section>
     </header>
 
     <section id="contents">
@@ -30,7 +30,8 @@
             <img class="mainIcon" src="~/Contents/Image/pencil.png" />
             <span class="mainTitle">등록</span>
             <span class="mainDesc">고양이를 맡기기 위해 먼저<br />등록을 해야겠죠?</span>
-            <a class="mainGo">등록하기</a>
+            @*<a class="mainGo">등록하기</a>*@
+            @Html.ActionLink("등록하기", "MainRegist", "Regist", null, new { @class = "mainGo" })
         </div>
         <div class="mainMenu">
             <img class="mainIcon" src="~/Contents/Image/placepin.png" />
