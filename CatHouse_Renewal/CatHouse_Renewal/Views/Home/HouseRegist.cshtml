@@ -1,0 +1,42 @@
+﻿<!doctype html>
+<html>
+<head>
+    <title>고양이하숙</title>
+
+    <meta charset="UTF-8" />
+
+    <script src="//code.jquery.com/jquery-1.11.3.min.js"></script>
+    <script src="//code.jquery.com/jquery-migrate-1.2.1.min.js"></script>
+
+    <link rel="stylesheet" type="text/css" href="~/Contents/common.css" />
+    <link rel="stylesheet" type="text/css" href="~/Contents/registSub.css" />
+
+    <script src="~/Contents/common.js"></script>
+</head>
+<body>
+    <!--Header Include-->
+    @{Html.RenderPartial("header");}
+    <section id="visual"> <img src="~/Contents/Image/exterior.png" /> <span style="font-weight: bold;">방을 제공</span>하시고, 수익을 벌려고 하시나요?<br />고양이 하숙에 <span style="font-weight: bold;">어서오세요!</span> </section>
+    </header>
+
+    <section id="contents">
+        <form class="pt10 pb10 mb20">
+            <p><span class="formLabel">집소개</span><input type="text" class="formInput t4" /></p>
+            <p><span class="formLabel">가격</span><input type="number" class="formInput t2" /></p>
+            <p>
+                <span class="formLabel">사진</span>
+                <button id="btn_imgRegist" class="btn btn_small btn_grey" style="display: inline-block;">등록하기</button>
+                <img class="preview" />
+                <img class="preview" />
+                <img class="preview" />
+            </p>
+            <p><span class="formLabel">구비용품</span><input type="text" class="formInput t4" /></p>
+            <p><span class="formLabel">기존동물여부</span><input type="password" class="formInput t4" /></p>
+        </form>
+        <button id="btn_regist" class="btn btn_blue">등록하기</button>
+    </section>
+
+    <!--Footer Include-->
+    @{Html.RenderPartial("footer");}
+</body>
+</html>

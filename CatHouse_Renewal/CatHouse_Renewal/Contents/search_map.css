@@ -1,0 +1,91 @@
+/************************************************
+   _____       _   _   _                      
+  /  __ \     | | | | | |                     
+  | /  \/ __ _| |_| |_| | ___  _   _ ___  ___ 
+  | |    / _` | __|  _  |/ _ \| | | / __|/ _ \
+  | \__/\ (_| | |_| | | | (_) | |_| \__ \  __/
+   \____/\__,_|\__\_| |_/\___/ \__,_|___/\___|
+
+  지도 검색 전용 스타일
+                      JoonChul Kim (jETA). 2015.
+************************************************/
+
+
+@media all and (max-width: 959px) {
+    form { width: 90%; margin: auto; }
+}
+
+span.formTitle {
+    font-size: 20px;
+    font-weight: bold;
+    
+    margin-bottom: 20px;
+    
+    display: inline-block;
+}
+
+#contents { margin-top: 40px; margin-bottom: 60px; }
+
+form { border-top: 2px solid #3F5157; min-height: 400px; text-align: right; }
+form #map { border: 0px; float: left; width: 480px; height: 360px; }
+@media all and (max-width: 959px) {
+    form #map { width: 100%; margin-bottom: 20px; }
+}
+
+form > div {
+    width: 430px;
+    
+    display: inline-block;
+    
+    text-align: left;
+    
+    padding-left: 20px;
+    padding-bottom: 20px;
+    margin-bottom: 20px;
+    border-bottom: 1px solid #c1c1c1;
+    
+    background-image: url(Image/pin_color.png);
+    background-size: 16px;
+    background-repeat: no-repeat;
+    background-position: left top;
+}
+form > div:nth-last-child(1) { padding-bottom: 0px; margin-bottom: 0px; border-bottom: 0px;}
+@media all and (max-width: 959px) {
+    form div { width: 100%; }
+    form > div:nth-last-child(1) { padding-bottom: 20px; border-bottom: 1px solid #c1c1c1; }
+}
+
+form > div > span { display: block; }
+form > div > span.resultTitle {
+    font-size: 16px;
+    font-weight: bold;
+    color: #333333;
+    
+    margin-bottom: 10px;
+}
+form > div > span.resultAddr {
+    font-size: 14px;
+    color: #666666;
+}
+form > div > span.resultPhone {
+    font-size: 12px;
+    color: #666666;
+}
+form > div > span.resultPhone > a { text-decoration: none; color: inherit; }
+img.resultImage {
+    width: 60px;
+    height: 45px;
+    
+    background-color: #FFFFFF;
+    
+    display: inline-block;
+    margin-right: 10px;
+    
+    vertical-align: top;
+}
+
+button#btn_search { display: inline-block; }
+
+@media all and (max-width: 959px) {
+    button#btn_search { width: 180px; }
+}

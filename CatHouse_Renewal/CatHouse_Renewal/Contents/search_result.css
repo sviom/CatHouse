@@ -1,0 +1,72 @@
+/************************************************
+   _____       _   _   _                      
+  /  __ \     | | | | | |                     
+  | /  \/ __ _| |_| |_| | ___  _   _ ___  ___ 
+  | |    / _` | __|  _  |/ _ \| | | / __|/ _ \
+  | \__/\ (_| | |_| | | | (_) | |_| \__ \  __/
+   \____/\__,_|\__\_| |_/\___/ \__,_|___/\___|
+
+  검색 결과 전용 스타일
+                      JoonChul Kim (jETA). 2015.
+************************************************/
+
+
+@media all and (max-width: 959px) {
+    #wrap_contents { width: 90%; margin: auto; }
+}
+
+span.formTitle {
+    font-size: 20px;
+    font-weight: bold;
+    
+    margin-bottom: 20px;
+    
+    display: inline-block;
+}
+
+#contents { margin-top: 40px; margin-bottom: 60px; }
+#wrap_contents { border-top: 2px solid #3F5157; }
+
+#contents ul {
+    border-bottom: 1px solid #AAAAAA;
+
+    padding-top: 30px;
+    padding-bottom: 30px;
+    margin-top: 0px;
+    margin-bottom: 0px;
+    margin-left: 0px;
+    padding-left: 0px;
+}
+#contents ul:last-of-type { margin-bottom: 30px; }
+@media all and (max-width: 959px) {
+    #contents ul { text-align: left; }
+}
+
+#contents ul li {
+    display: inline-block;
+    
+    padding-left: 20px;
+    padding-right: 20px;
+
+    color: #666666;
+    border-left: 1px solid #AAAAAA;
+}
+#contents ul li.blue { color: #26a8d4; }
+#contents ul li:first-of-type { border-left: none; }
+#contents ul li > span { font-weight: bold; margin-right: 10px; color: #000000; }
+@media all and (max-width: 959px) {
+    #contents ul li {
+        display: block;
+        
+        border-left: none;
+        margin-left: 0px;
+        margin-right: 0px;
+        padding-left: 0px;
+        padding-right: 0px;
+    }
+}
+
+button.btn { display: inline-block; }
+@media all and (max-width: 959px) {
+    button.btn { display: inline-block; width: 49%; }
+}

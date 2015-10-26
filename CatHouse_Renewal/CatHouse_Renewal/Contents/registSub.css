@@ -1,0 +1,60 @@
+/************************************************
+   _____       _   _   _                      
+  /  __ \     | | | | | |                     
+  | /  \/ __ _| |_| |_| | ___  _   _ ___  ___ 
+  | |    / _` | __|  _  |/ _ \| | | / __|/ _ \
+  | \__/\ (_| | |_| | | | (_) | |_| \__ \  __/
+   \____/\__,_|\__\_| |_/\___/ \__,_|___/\___|
+
+  등록(세부) 전용 스타일
+                      JoonChul Kim (jETA). 2015.
+************************************************/
+
+
+form {
+    border-top: 2px solid #3F5157;
+    border-bottom: 1px solid #EDEDED;
+}
+
+span.formTitle {
+    font-size: 20px;
+    font-weight: bold;
+    
+    margin-bottom: 20px;
+    
+    display: inline-block;
+}
+
+#contents {
+    margin-top: 40px;
+    margin-bottom: 60px;
+}
+
+form p { width: 700px; text-align: left; margin: 20px auto; min-height: 30px; }
+
+button#btn_regist { display: inline-block; }
+
+img.preview {
+    width: 120px;
+    height: 90px;
+    
+/*    border: 1px solid #EDEDED;*/
+    background-color: #FFFFFF;
+    
+    display: inline-block;
+    margin-left: 10px;
+    
+    vertical-align: top;
+}
+
+label { margin-right: 20px; }
+
+@media all and (max-width: 959px) {
+    form { width: 90%; margin: auto; }
+    form p { width: 100%; }
+    button#btn_regist { width: 180px; }
+    button#btn_imgRegist { display: block !important; width: 120px; margin: 10px 0px; }
+    input.formInput { width: 100%; }
+    img.preview { margin: 1%; width: 30%; }
+    p.wrapRadio .formLabel { width: 100px; display: inline-block; }
+}

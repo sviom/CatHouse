@@ -1,0 +1,45 @@
+/************************************************
+   _____       _   _   _                      
+  /  __ \     | | | | | |                     
+  | /  \/ __ _| |_| |_| | ___  _   _ ___  ___ 
+  | |    / _` | __|  _  |/ _ \| | | / __|/ _ \
+  | \__/\ (_| | |_| | | | (_) | |_| \__ \  __/
+   \____/\__,_|\__\_| |_/\___/ \__,_|___/\___|
+
+  로그인페이지 전용 스타일
+                      JoonChul Kim (jETA). 2015.
+************************************************/
+
+#contents > form {
+    margin: 60px 0px;
+}
+
+@media all and (max-width: 959px) {
+    #contents > form { width: 80%; margin: auto; }
+}
+
+#contents > form > div {
+    height: 50px;
+    line-height: 50px;
+}
+
+@media all and (max-width: 959px) {
+    #contents > form > div { height: auto; line-height: inherit; }
+}
+
+#contents button#btn_login {
+    display: inline-block;
+    
+    width: 380px;
+    height: 60px;
+    
+    font-size: 20px;
+    
+    border: 0px;
+    margin: 20px;
+}
+
+@media all and (max-width: 959px) {
+    #contents button#btn_login { width: 100%; margin: 20px 0px; }
+    #regist { margin: 20px auto; }
+}

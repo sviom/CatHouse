@@ -1,0 +1,59 @@
+/************************************************
+   _____       _   _   _                      
+  /  __ \     | | | | | |                     
+  | /  \/ __ _| |_| |_| | ___  _   _ ___  ___ 
+  | |    / _` | __|  _  |/ _ \| | | / __|/ _ \
+  | \__/\ (_| | |_| | | | (_) | |_| \__ \  __/
+   \____/\__,_|\__\_| |_/\___/ \__,_|___/\___|
+
+  필터 검색 전용 스타일
+                      JoonChul Kim (jETA). 2015.
+************************************************/
+
+
+@media all and (max-width: 959px) {
+    form { width: 90%; margin: auto; }
+}
+
+span.formTitle {
+    font-size: 20px;
+    font-weight: bold;
+    
+    margin-bottom: 20px;
+    
+    display: inline-block;
+}
+
+#contents { margin-top: 40px; margin-bottom: 60px; }
+
+form { border-top: 2px solid #3F5157; }
+form div { text-align: left; width: 600px; margin: auto; margin-bottom: 10px; }
+
+form select {
+    height: 40px;
+    overflow: hidden;
+    -webkit-appearance: none;
+    text-indent: 10px;
+    
+    font-size: 16px;
+    
+    background-image: url(Image/selectArrow.png);
+    background-position: right center;
+    background-repeat: no-repeat;
+    background-color: #FFFFFF;
+   
+    border: 1px solid #C1C1C1;
+    border-radius: 0px;
+}
+form select.small { width: 120px; }
+form select.big { width: 170px; }
+
+button#btn_search { display: inline-block; }
+
+@media all and (max-width: 959px) {
+    form { border-bottom: 1px solid #C1C1C1; }
+    form div { width: 100%; margin-bottom: 0px; }
+    form select { display: block; margin-bottom: 10px; }
+    form select.big { width: 100%; }
+    button#btn_search { width: 180px; }
+}

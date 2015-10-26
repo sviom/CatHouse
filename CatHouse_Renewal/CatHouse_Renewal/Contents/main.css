@@ -1,0 +1,122 @@
+/************************************************
+   _____       _   _   _                      
+  /  __ \     | | | | | |                     
+  | /  \/ __ _| |_| |_| | ___  _   _ ___  ___ 
+  | |    / _` | __|  _  |/ _ \| | | / __|/ _ \
+  | \__/\ (_| | |_| | | | (_) | |_| \__ \  __/
+   \____/\__,_|\__\_| |_/\___/ \__,_|___/\___|
+
+  메인페이지 전용 스타일
+                      JoonChul Kim (jETA). 2015.
+************************************************/
+
+header > section {
+    margin: auto;
+    max-width: 960px;
+    height: 390px;
+    line-height: 390px;
+    font-size: 155px;
+    background-image: url('Image/logo_big.png');
+    background-repeat: no-repeat;
+    background-position: 50px center;
+}
+
+header > section > img { display: inline; margin-left: 550px; }
+
+@media all and (max-width: 959px) {
+    header > section {
+        margin: auto;
+        margin-top 50px;
+        height: 180px;
+        line-height: 180px;
+        font-size: 180px;
+
+        background-image: none;
+        
+        text-align: center;
+    }
+
+    header > section > img { display: inline; margin-left: 0px; height: 130px; margin-top: 20px; }
+}
+
+
+.mainMenu {
+    display: inline-block;
+    width: 250px;
+    
+    margin-top: 20px;
+    margin-bottom: 20px;
+}
+
+@media all and (max-width: 959px) {
+    .mainMenu {
+        display: block;
+        width: 80%;
+        padding: 0 10%;
+        
+        margin: auto;
+        
+        border-bottom: 1px solid #d4d4d4;
+    }
+    
+    .mainMenu:nth-last-child(1) {
+        border-bottom: none;
+    }
+}
+
+.mainMenu .mainIcon {
+    background-color: #26a8d4;
+    border-radius: 110px;
+    
+    width: 50px;
+    
+    padding: 30px;
+}
+
+@media all and (max-width: 959px) {
+    .mainMenu .mainIcon { float: left; margin: 0px 10px; }
+}
+
+.mainMenu .mainTitle {
+    display: block;
+    
+    color: #333333;
+    font-size: 20px;
+    font-weight: bold;
+    
+    margin: 20px 0px;
+}
+
+.mainMenu .mainDesc {
+    display: block;
+    
+    color: #666666;
+    font-size: 14px;
+}
+
+@media all and (max-width: 959px) {
+    .mainMenu .mainTitle { height: 20px; padding-top: 20px; text-align: left; }
+    .mainMenu .mainDesc { height: 30px; padding-bottom: 30px; text-align: left; }
+}
+
+.mainMenu .mainGo {
+    display: inline-block;
+    width: 100px;
+    height: 20px;
+    line-height: 20px;
+    
+    font-size: 12px;
+    color: #444444;
+    
+    padding: 5px;
+    margin: 20px;
+    border-radius: 20px;
+    
+    background-color: #e7ebec;
+    background-image: url('Image/mainMenuArrow.png');
+    background-size: 15px;
+    background-repeat: no-repeat;
+    background-position: 84px center;
+    
+    cursor: pointer;
+}
