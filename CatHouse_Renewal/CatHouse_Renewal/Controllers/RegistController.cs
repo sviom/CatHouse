@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using System.Web.Security;
 
 namespace CatHouse_Renewal.Controllers
 {
@@ -32,6 +33,13 @@ namespace CatHouse_Renewal.Controllers
         public ActionResult TraderRegist()
         {
             return View();
+        }
+
+        [ActionName("MemberCreate")]
+        public void MemeberCreate()
+        {
+            // 비밀번호 암호화
+
         }
     }
 }

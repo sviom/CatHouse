@@ -15,7 +15,6 @@ namespace CatHouse_Renewal.Models
         // 고양이 이름
         public string catName { get; set; }
 
-        //[DataType(DataType.]
         // 고양이 나이
         public int catAge { get; set; }
 

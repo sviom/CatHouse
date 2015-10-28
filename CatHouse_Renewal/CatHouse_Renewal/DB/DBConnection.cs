@@ -13,10 +13,10 @@ namespace CatHouse_Renewal.DB
         private static SqlConnection conn;
 
         // DB 열기
-        public SqlConnection DbOpen(string ConnectionName = "CatHouseConnction")
+        public SqlConnection DbOpen(string ConnectionName = "CATHOUSECONNECTION")
         {
             // WebConfig 파일에 있는 CatHouseConnection 문장을 이용해 SqlConnection 객체를 만든다.
-            conn = new SqlConnection(WebConfigurationManager.ConnectionStrings["CatHouseConnction"].ToString());
+            conn = new SqlConnection(WebConfigurationManager.ConnectionStrings["CATHOUSECONNECTION"].ToString());
             try
             {
                 // 현재 연결되어 있지 않은 상황이면 연결

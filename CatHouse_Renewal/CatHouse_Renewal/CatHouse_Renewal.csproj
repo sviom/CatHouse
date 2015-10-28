@@ -160,9 +160,9 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
-    <Compile Include="Models\Cat\CatModel.cs" />
-    <Compile Include="Models\Member\MemberModel.cs" />
-    <Compile Include="Models\Trader\TraderModel.cs" />
+    <Compile Include="Models\CatModel.cs" />
+    <Compile Include="Models\MemberModel.cs" />
+    <Compile Include="Models\TraderModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
