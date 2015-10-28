@@ -213,6 +213,7 @@
     <Content Include="Views\Regist\MemberRegist.cshtml" />
     <Content Include="Views\Regist\TraderRegist.cshtml" />
     <None Include="Properties\PublishProfiles\CatHouse.pubxml" />
+    <Content Include="Views\Home\About.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

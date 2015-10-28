@@ -11,7 +11,8 @@
             <img id="btn_login" src="~/Contents/Image/logout.png" />
         </div>*@
         <ul>
-            <li class="on"><span>홈</span></li>
+            @*<li class="on"><span>홈</span></li>*@
+            <li class="on"><span>@Html.ActionLink("홈", "Index", "Home", null, new { @class = "on" })</span></li>
             @*<li><span>고양이하숙</span></li>*@
             <li><span>@Html.ActionLink("고양이하숙", "MainRegist", "Regist", null, new { @class = "on" })</span></li>
             <li><span>등록</span></li>

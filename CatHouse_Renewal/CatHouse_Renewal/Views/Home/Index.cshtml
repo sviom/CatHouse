@@ -24,7 +24,8 @@
             <img class="mainIcon" src="~/Contents/Image/pawstamp.png" />
             <span class="mainTitle">고양이 하숙 소개</span>
             <span class="mainDesc">고양이 하숙에 대해<br />알아보세요!</span>
-            <a class="mainGo">소개보기</a>
+            @*<a class="mainGo">소개보기</a>*@
+            @Html.ActionLink("소개보기", "About", "Home", null, new { @class = "mainGo" })
         </div>
         <div class="mainMenu">
             <img class="mainIcon" src="~/Contents/Image/pencil.png" />

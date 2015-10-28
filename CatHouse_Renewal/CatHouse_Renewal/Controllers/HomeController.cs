@@ -14,7 +14,8 @@ namespace CatHouse_Renewal.Controllers
             return View();
         }
 
-        public ActionResult HouseRegist()
+        // 소개페이지로 이동
+        public ActionResult About()
         {
             return View();
         }
