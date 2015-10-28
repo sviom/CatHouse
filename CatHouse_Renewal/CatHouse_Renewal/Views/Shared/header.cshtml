@@ -1,5 +1,6 @@
 ﻿<div class="onlyMobile" id="mobileMenu"></div>
 <header>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" />
     <menu id="gnb" class="pt20">
         <img id="goto_home" class="fl btn_span" src="~/Contents/Image/logo.png" alt="메인 페이지로 이동" />
         <div id="wrap_login">
@@ -14,9 +15,11 @@
             @*<li class="on"><span>홈</span></li>*@
             <li class="on"><span>@Html.ActionLink("홈", "Index", "Home", null, new { @class = "on" })</span></li>
             @*<li><span>고양이하숙</span></li>*@
-            <li><span>@Html.ActionLink("고양이하숙", "MainRegist", "Regist", null, new { @class = "on" })</span></li>
-            <li><span>등록</span></li>
-            <li><span>검색</span></li>
+            <li><span>@Html.ActionLink("고양이하숙", "About", "Home", null, new { @class = "on" })</span></li>
+            @*<li><span>등록</span></li>*@
+            <li><span>@Html.ActionLink("등록", "MainRegist", "Regist", null, new { @class = "on" })</span></li>
+            @*<li><span>검색</span></li>*@
+            <li><span>@Html.ActionLink("검색", "FilterFinder", "Finder", null, new { @class = "on" })</span></li>
             <li class="onlyMobile"><span>홍길동님 | 로그아웃</span></li>
         </ul>
     </menu>

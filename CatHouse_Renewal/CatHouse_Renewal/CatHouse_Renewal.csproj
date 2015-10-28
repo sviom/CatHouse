@@ -152,6 +152,7 @@
   <ItemGroup>
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\WebApiConfig.cs" />
+    <Compile Include="Controllers\FinderController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\RegistController.cs" />
     <Compile Include="Global.asax.cs">
@@ -212,6 +213,8 @@
     <Content Include="Views\Home\About.cshtml" />
     <None Include="Properties\PublishProfiles\cathouse3.pubxml" />
     <None Include="Properties\PublishProfiles\CatsLandlady.pubxml" />
+    <Content Include="Views\Finder\MapFinder.cshtml" />
+    <Content Include="Views\Finder\FilterFinder.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
