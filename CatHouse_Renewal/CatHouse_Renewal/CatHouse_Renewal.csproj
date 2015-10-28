@@ -155,9 +155,14 @@
     <Compile Include="Controllers\FinderController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\RegistController.cs" />
+    <Compile Include="DB\DBConnection.cs" />
+    <Compile Include="DB\InsertDB.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Models\Cat\CatModel.cs" />
+    <Compile Include="Models\Member\MemberModel.cs" />
+    <Compile Include="Models\Trader\TraderModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -209,10 +214,8 @@
     <Content Include="Views\Regist\CatRegist.cshtml" />
     <Content Include="Views\Regist\MemberRegist.cshtml" />
     <Content Include="Views\Regist\TraderRegist.cshtml" />
-    <None Include="Properties\PublishProfiles\CatHouse.pubxml" />
     <Content Include="Views\Home\About.cshtml" />
     <None Include="Properties\PublishProfiles\cathouse3.pubxml" />
-    <None Include="Properties\PublishProfiles\CatsLandlady.pubxml" />
     <Content Include="Views\Finder\MapFinder.cshtml" />
     <Content Include="Views\Finder\FilterFinder.cshtml" />
     <None Include="Web.Debug.config">
@@ -224,7 +227,6 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="Models\" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
