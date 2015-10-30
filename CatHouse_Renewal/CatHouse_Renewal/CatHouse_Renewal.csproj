@@ -219,6 +219,7 @@
     <None Include="Properties\PublishProfiles\cathouse3.pubxml" />
     <Content Include="Views\Finder\MapFinder.cshtml" />
     <Content Include="Views\Finder\FilterFinder.cshtml" />
+    <Content Include="Views\Regist\Registered.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
