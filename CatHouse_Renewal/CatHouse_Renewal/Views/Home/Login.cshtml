@@ -1,0 +1,41 @@
+﻿@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" />
+    <meta charset="UTF-8" />
+    <meta name="description" content="고양이 하숙입니다." />
+
+    <script src="//code.jquery.com/jquery-1.11.3.min.js"></script>
+    <script src="//code.jquery.com/jquery-migrate-1.2.1.min.js"></script>
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" />
+    <link rel="stylesheet" type="text/css" href="~/Contents/common.css" />
+    <link rel="stylesheet" type="text/css" href="~/Contents/login.css" />
+
+    <script src="~/Contents/common.js"></script>
+</head>
+<body>
+    <!--Header Include-->
+    @{Html.RenderPartial("header");}
+
+    <section id="visual"> <img src="~/Contents/Image/musicalnote.png" /> <span style="font-weight: bold;">고양이 하숙</span>에 어서오세요. </section>
+    </header>
+
+    <section id="contents">
+        <form>
+            <div><span class="formLabel">이메일</span><input type="email" name="id" id="id" class="formInput t2" /></div>
+            <div><span class="formLabel">비밀번호</span><input type="password" name="password" id="password" class="formInput t2" /></div>
+            <button id="btn_login" class="btn btn_blue">로그인</button>
+            <div><img id="regist" src="~/Contents/Image/regist.png" onclick="location.href='@Url.Action("MainRegist", "Regist")'" /></div>
+        </form>
+    </section>
+
+    <!--footer Include-->
+    @{Html.RenderPartial("footer");}
+</body>
+</html>
