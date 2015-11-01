@@ -14,7 +14,7 @@ namespace CatHouse_Renewal.DB
         // DBConnection 객체에서 받아온 SqlConnection 객체를 받아옴.
         private static SqlConnection conn;
 
-        public void MemberInsert(MemberModel memItem)
+        public bool MemberInsert(MemberModel memItem)
         {
             try
             {
@@ -39,12 +39,12 @@ namespace CatHouse_Renewal.DB
                     int rows = sqlQuery.ExecuteNonQuery();
                 }
                 db.DbClose();
-                //return true;
+                return true;
             }
             catch (SqlException sqlEx)
             {
                 sqlEx.Message.ToString();
-                //return false;
+                return false;
             }
         }
     }

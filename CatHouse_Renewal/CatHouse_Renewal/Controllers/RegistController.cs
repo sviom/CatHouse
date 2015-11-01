@@ -49,52 +49,52 @@ namespace CatHouse_Renewal.Controllers
             return View();
         }
 
+        
         [ActionName("MemberCreate")]
-        public void MemeberCreate()
+        public ActionResult MemeberCreate(FormCollection memberForm)
         {
             // 비밀번호 암호화
             try
             {
-                //string memName = Request.Form["memName"];
-                //string memEmail = Request.Form["memEmail"];
-                //string memPassword = Request.Form["memPW"];
-                //int memPhone = Convert.ToInt32(Request.Form["memPhone"]);
-                //string memAddress = Request.Form["memAddress"];
+                string memName = Request.Form["memName"];
+                string memEmail = Request.Form["memEmail"];
+                string memPassword = Request.Form["memPassword"];
+                int memPhone = Convert.ToInt32(Request.Form["memPhone"]);
+                string memAddress = Request.Form["memAddress"];
 
-                //// 실제로 체크
-                //bool emailCheck = check.CheckEmail(memEmail);
-                //bool passCheck = check.CheckPasswordLength(memPassword);
+                // 실제로 체크
+                bool emailCheck = check.CheckEmail(memEmail);
+                bool passCheck = check.CheckPasswordLength(memPassword);
 
-                //// 이메일형식 또는 패스워드 길이가 맞지 않으면
-                //if (!emailCheck || !passCheck)
-                //{
-                //    throw new Exception();
-                //}
+                // 이메일형식 또는 패스워드 길이가 맞지 않으면
+                if (!emailCheck || !passCheck)
+                {
+                    throw new Exception();
+                }
 
-                //// 새로운 멤버 객체 생성
-                //MemberModel newMem = new MemberModel();
-                //newMem.memName = memName;
-                //newMem.memEmail = memEmail;
-                //newMem.memPassword = memPassword;
-                //newMem.memPhone = memPhone;
-                //newMem.memAddress = memAddress;
+                // 새로운 멤버 객체 생성
+                MemberModel newMem = new MemberModel();
+                newMem.memName = memName;
+                newMem.memEmail = memEmail;
+                newMem.memPassword = memPassword;
+                newMem.memPhone = memPhone;
+                newMem.memAddress = memAddress;
 
-                //insertDB.MemberInsert(newMem);
+                bool queryResult = insertDB.MemberInsert(newMem);
                 // 아이템 추가
                 // 결과에 따라서 환영페이지로 이동할지, 오류 메시지 출력 후 홈페이지로 이동할 지 결정
-                //if (queryResult)
-                //{
-                //    //return RedirectToAction("MemberWelcome", "Member");
-                //}
-                //else
-                //{
-                //    throw new Exception();
-                //}
-                RedirectToAction("Registered", "Regist");
+                if (queryResult)
+                {
+                    return RedirectToAction("Registered", "Regist");
+                }
+                else
+                {
+                    throw new Exception();
+                }
             }
             catch
             {
-                //return RedirectToAction("Error", "Home");
+                return RedirectToAction("Error", "Home");
             }
         }
 
