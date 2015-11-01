@@ -98,7 +98,7 @@ namespace CatHouse_Renewal.DB
                 else
                 {
                     // 고유아이디/이름/나이/성별/중성화상태/사진/상태메모
-                    string query = "INSERT INTO dbo.TraderMember (homePrice,existPetintro,existPet,homePhotoURL,homeIntro,homeAddress) VALUES (@memName,@memPassword,@memAddress,@memEmail,@memPhone,@homeAddress)";
+                    string query = "INSERT INTO dbo.TraderMember (homePrice,existPetintro,existPet,homePhotoURL,homeIntro,homeAddress) VALUES (@homePrice,@existPetintro,@existPet,@homePhotoURL,@homeIntro,@homeAddress)";
                     SqlCommand sqlQuery = new SqlCommand(query, conn);
                     sqlQuery.Parameters.AddWithValue("@homePrice", tmemItem.homePrice);
                     sqlQuery.Parameters.AddWithValue("@existPetintro", tmemItem.existPetIntro);
@@ -114,6 +114,7 @@ namespace CatHouse_Renewal.DB
             }
             catch (Exception ex)
             {
+                ex.Message.ToString();
                 return false;
             }
         }

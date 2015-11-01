@@ -21,20 +21,25 @@
     </header>
 
     <section id="contents">
-        <form class="pt10 pb10 mb20">
-            <p><span class="formLabel">집소개</span><input type="text" class="formInput t4" /></p>
-            <p><span class="formLabel">가격</span><input type="number" class="formInput t2" /></p>
-            <p>
-                <span class="formLabel">사진</span>
-                <button id="btn_imgRegist" class="btn btn_small btn_grey" style="display: inline-block;">등록하기</button>
-                <img class="preview" />
-                <img class="preview" />
-                <img class="preview" />
-            </p>
-            <p><span class="formLabel">구비용품</span><input type="text" class="formInput t4" /></p>
-            <p><span class="formLabel">기존동물여부</span><input type="password" class="formInput t4" /></p>
-        </form>
-        <button id="btn_regist" class="btn btn_blue">등록하기</button>
+        @using (Html.BeginForm("TraderCreate", "Regist", FormMethod.Post, htmlAttributes: new { @class = "pt10 pb10 mb20" }))
+        {
+            @*<form class="pt10 pb10 mb20">*@
+                <p><span class="formLabel">집소개</span><input type="text" class="formInput t4" name="homeIntro" / ></p>
+                <p><span class="formLabel">가격</span><input type="number" class="formInput t2" name="homePrice"/></p>
+                <p>
+                    <span class="formLabel">사진</span>
+                    <button id="btn_imgRegist" class="btn btn_small btn_grey" style="display: inline-block;">등록하기</button>
+                    <img class="preview" />
+                    <img class="preview" />
+                    <img class="preview" />
+                </p>
+                <p><span class="formLabel">구비용품</span><input type="text" class="formInput t4" name="homeGoods"/></p>
+                <p><span class="formLabel">기존동물여부</span><input type="text" class="formInput t4" name="existPet"/></p>
+            @*</form>*@
+            <button id="btn_regist" class="btn btn_blue">등록하기</button>
+        }
+
+        @*<button id="btn_regist" class="btn btn_blue">등록하기</button>*@
     </section>
 
     <!--Footer Include-->

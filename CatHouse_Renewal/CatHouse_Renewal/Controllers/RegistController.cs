@@ -162,10 +162,45 @@ namespace CatHouse_Renewal.Controllers
             }
         }
 
+        [HttpPost]
         [ActionName("TraderCreate")]
-        public void TraderCreate()
+        public ActionResult TraderCreate()
         {
+            try
+            {
+                string homeIntro = Request.Form["homeIntro"];
+                int homePrice = Convert.ToInt32( Request.Form["homePrice"]);
+                string homeGoods = Request.Form["homeGoods"];
+                string existPet = Request.Form["existPet"];
 
+                // 새로운 멤버 객체 생성
+                TraderModel newTraderMem = new TraderModel();
+                newTraderMem.homePrice = homePrice;
+                newTraderMem.homeIntro = homeIntro;
+                newTraderMem.existPet = true;
+                newTraderMem.existPetIntro = "기존에 있는 동물 소개";
+                newTraderMem.homeAddress = "구로구항동";
+                newTraderMem.homePhotoURL = "어딘가에 있을사진";
+
+                // 아이템 추가
+                bool queryResult = insertDB.TraderMemberInsertToDB(newTraderMem);
+
+                if (queryResult)
+                {
+                    // 환영 showPopup을 띄운 후 이동
+                    return RedirectToAction("Index", "Home");
+                }
+                else
+                {
+                    throw new Exception();
+                }
+            }
+            catch (Exception ex)
+            {
+                // 에러 팝업을 띄운 후 그대로 있는다.
+                ex.Message.ToString();
+                return RedirectToAction("Error", "Home");
+            }
         }
     }
 }
