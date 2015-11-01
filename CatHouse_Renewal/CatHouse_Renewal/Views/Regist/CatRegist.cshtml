@@ -24,20 +24,23 @@
 
     <section id="contents">
         <span class="formTitle">고양이 등록하기</span>
-        <form class="pt10 pb10 mb20">
-            <p><span class="formLabel">이름</span><input type="text" class="formInput t2" /></p>
-            <p><span class="formLabel">나이</span><input type="text" class="formInput t2" /></p>
+        @using (Html.BeginForm("CatCreate", "Regist", FormMethod.Post, htmlAttributes: new { @class = "pt10 pb10 mb20" }))
+        {
+
+            @*<form class="pt10 pb10 mb20">*@
+            <p><span class="formLabel">이름</span><input type="text" class="formInput t2" name="catName"/></p>
+            <p><span class="formLabel">나이</span><input type="text" class="formInput t2" name="catAge"/></p>
             <p class="wrapRadio">
                 <span class="formLabel">성별</span>
-                <input type="radio" name="gender" id="genderM" value="male" /><label for="genderM">남</label>
-                <input type="radio" name="gender" id="genderF" value="female" /><label for="genderF">여</label>
+                <input type="radio" name="catGender" id="genderM" value="male" /><label for="genderM">남</label>
+                <input type="radio" name="catGender" id="genderF" value="female" /><label for="genderF">여</label>
             </p>
             <p class="wrapRadio">
                 <span class="formLabel">중성화여부</span>
-                <input type="radio" name="surgery" id="surgeryY" value="male" /><label for="surgeryY">중성화함</label>
-                <input type="radio" name="surgery" id="surgeryN" value="female" /><label for="surgeryN">안함</label>
+                <input type="radio" name="catSurgery" id="surgeryY" value="yes" /><label for="surgeryY">중성화함</label>
+                <input type="radio" name="catSurgery" id="surgeryN" value="no" /><label for="surgeryN">안함</label>
             </p>
-            <p><span class="formLabel">메모</span><input type="text" class="formInput t4" /></p>
+            <p><span class="formLabel">메모</span><input type="text" class="formInput t4" name="catMemo"/></p>
             <p>
                 <span class="formLabel">사진</span>
                 <button id="btn_imgRegist" class="btn btn_small btn_grey" style="display: inline-block;">등록하기</button>
@@ -45,8 +48,10 @@
                 <img class="preview" />
                 <img class="preview" />
             </p>
-        </form>
-        <button id="btn_regist" class="btn btn_blue">등록하기</button>
+            @*</form>*@
+            <button id="btn_regist" class="btn btn_blue">등록하기</button>
+        }
+        @*<button id="btn_regist" class="btn btn_blue">등록하기</button>*@
     </section>
 
     <!--Footer Include-->

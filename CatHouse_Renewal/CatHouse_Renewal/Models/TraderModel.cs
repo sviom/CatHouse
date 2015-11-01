@@ -25,5 +25,8 @@ namespace CatHouse_Renewal.Models
 
         // 집 사진 URL
         public string homePhotoURL { get; set; }
+
+        // 집 주소
+        public string homeAddress { get; set; }
     }
 }
