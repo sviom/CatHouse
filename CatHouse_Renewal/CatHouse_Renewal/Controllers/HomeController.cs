@@ -15,7 +15,7 @@ namespace CatHouse_Renewal.Controllers
         // 점검 관련 함수들 모음
         Check check = new Check();
 
-        // GET: Home
+        [ActionName("Index")]
         public ActionResult Index()
         {
             return View();
