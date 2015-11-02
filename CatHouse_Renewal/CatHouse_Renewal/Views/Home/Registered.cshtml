@@ -27,14 +27,14 @@
             <span class="mainTitle">고양이 등록</span>
             <span class="mainDesc">회원이 되셨으니,<br />고양이를 등록하셔야겠죠?</span>
             @*<a class="mainGo">등록하기</a>*@
-            @Html.ActionLink("등록하기", "CatRegist", "Regist", null, new { @class = "mainGo" })
+            @Html.ActionLink("등록하기", "CatRegist", "Home", null, new { @class = "mainGo" })
         </div>
         <div class="mainMenu">
             <img class="mainIcon" src="~/Contents/Image/placepin.png" />
             <span class="mainTitle">장소 찾기</span>
             <span class="mainDesc">근처에 맡길 곳이 있나<br />찾아보러 갑시다.</span>
             @*<a class="mainGo">장소찾기</a>*@
-            @Html.ActionLink("장소찾기", "FilterFinder", "Finder", null, new { @class = "mainGo" })
+            @Html.ActionLink("장소찾기", "FilterFinder", "Home", null, new { @class = "mainGo" })
         </div>
         <div class="mainMenu">
             <img class="mainIcon" src="~/Contents/Image/pawstamp.png" />
