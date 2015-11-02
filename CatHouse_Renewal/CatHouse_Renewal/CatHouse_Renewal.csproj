@@ -153,9 +153,7 @@
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\WebApiConfig.cs" />
     <Compile Include="Controllers\Check.cs" />
-    <Compile Include="Controllers\FinderController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
-    <Compile Include="Controllers\RegistController.cs" />
     <Compile Include="DB\DBConnection.cs" />
     <Compile Include="DB\InsertDB.cs" />
     <Compile Include="DB\RemoveDB.cs" />
@@ -214,15 +212,15 @@
     <Content Include="Views\Shared\footer.cshtml" />
     <Content Include="Views\Shared\header.cshtml" />
     <Content Include="Views\Home\Index.cshtml" />
-    <Content Include="Views\Regist\MainRegist.cshtml" />
-    <Content Include="Views\Regist\CatRegist.cshtml" />
-    <Content Include="Views\Regist\MemberRegist.cshtml" />
-    <Content Include="Views\Regist\TraderRegist.cshtml" />
+    <Content Include="Views\Home\MainRegist.cshtml" />
+    <Content Include="Views\Home\CatRegist.cshtml" />
+    <Content Include="Views\Home\MemberRegist.cshtml" />
+    <Content Include="Views\Home\TraderRegist.cshtml" />
     <Content Include="Views\Home\About.cshtml" />
     <None Include="Properties\PublishProfiles\cathouse3.pubxml" />
-    <Content Include="Views\Finder\MapFinder.cshtml" />
-    <Content Include="Views\Finder\FilterFinder.cshtml" />
-    <Content Include="Views\Regist\Registered.cshtml" />
+    <Content Include="Views\Home\MapFinder.cshtml" />
+    <Content Include="Views\Home\FilterFinder.cshtml" />
+    <Content Include="Views\Home\Registered.cshtml" />
     <Content Include="Views\Home\Login.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
