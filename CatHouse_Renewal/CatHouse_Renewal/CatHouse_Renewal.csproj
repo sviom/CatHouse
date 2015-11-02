@@ -158,6 +158,9 @@
     <Compile Include="Controllers\RegistController.cs" />
     <Compile Include="DB\DBConnection.cs" />
     <Compile Include="DB\InsertDB.cs" />
+    <Compile Include="DB\RemoveDB.cs" />
+    <Compile Include="DB\SelectDB.cs" />
+    <Compile Include="DB\UpdateDB.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
