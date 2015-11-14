@@ -152,6 +152,7 @@
   <ItemGroup>
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\WebApiConfig.cs" />
+    <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\Check.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\IntroController.cs" />
@@ -159,6 +160,7 @@
     <Compile Include="Controllers\SearchController.cs" />
     <Compile Include="DB\DBConnection.cs" />
     <Compile Include="DB\InsertDB.cs" />
+    <Compile Include="DB\LoginConnection.cs" />
     <Compile Include="DB\RemoveDB.cs" />
     <Compile Include="DB\SelectDB.cs" />
     <Compile Include="DB\UpdateDB.cs" />
@@ -224,7 +226,7 @@
     <Content Include="Views\Search\MapFinder.cshtml" />
     <Content Include="Views\Search\FilterFinder.cshtml" />
     <Content Include="Views\Regist\Registered.cshtml" />
-    <Content Include="Views\Home\Login.cshtml" />
+    <Content Include="Views\Account\Login.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
