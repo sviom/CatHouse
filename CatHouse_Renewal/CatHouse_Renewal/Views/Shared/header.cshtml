@@ -1,4 +1,9 @@
-﻿<div class="onlyMobile" id="mobileMenu"></div>
+﻿@{ 
+    var pageName = ViewContext.RouteData.Values["controller"].ToString();
+    var fileName = Path.GetFileName(Server.MapPath(VirtualPath));
+}
+
+<div class="onlyMobile" id="mobileMenu"></div>
 <header>
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" />
     <menu id="gnb" class="pt20">
@@ -14,13 +19,13 @@
         <ul>
             <!--현재 페이지를 체크하는 if문을  모든 li에 넣고 현재페이지가 해당 제목이면 li에 class='on'을 프린트 한다.-->
             @*<li class="on"><span>홈</span></li>*@
-            <li class="on"><span>@Html.ActionLink("홈", "Index", "Home")</span></li>
+            <li class="@(pageName == "Home" ? "on" : "")"><span>@Html.ActionLink("홈", "Index", "Home")</span></li>
             @*<li><span>고양이하숙</span></li>*@
-            <li><span>@Html.ActionLink("고양이하숙", "About", "Home")</span></li>
+            <li class="@(pageName == "Intro" ? "on" : "")"><span>@Html.ActionLink("고양이하숙", "About", "Intro")</span></li>
             @*<li><span>등록</span></li>*@
-            <li><span>@Html.ActionLink("등록", "MainRegist", "Home")</span></li>
+            <li class="@(pageName == "Regist" ? "on" : "")"><span>@Html.ActionLink("등록", "MainRegist", "Regist")</span></li>
             @*<li><span>검색</span></li>*@
-            <li><span>@Html.ActionLink("검색", "FilterFinder", "Home")</span></li>
+            <li class="@(pageName == "Search" ? "on" : "")"><span>@Html.ActionLink("검색", "FilterFinder", "Search")</span></li>
             <li class="onlyMobile"><span>홍길동님 | 로그아웃</span></li>
         </ul>
     </menu>
