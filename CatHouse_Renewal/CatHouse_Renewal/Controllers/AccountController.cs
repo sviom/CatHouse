@@ -26,7 +26,7 @@ namespace CatHouse_Renewal.Controllers
 
         [HttpPost]
         [ActionName("BeginLogin")]
-        public JavaScriptResult BeginLogin(MemberModel memModel)
+        public void BeginLogin(MemberModel memModel)
         {
             try
             {
@@ -45,13 +45,12 @@ namespace CatHouse_Renewal.Controllers
                 // 관련 항목(로그인버튼/이름) 매칭
                 Session["MemberID"] = loginQueryMemID;
 
-
-                return JavaScript("showPopup('Success','성공입니다.',400,400);");
+                //return JavaScript("<script type='text/javascript' src='~/Contents/common.js'>showPopup('Success','성공입니다.',400,400);</script>");
             }
             catch (Exception ex)
             {
                 ex.Message.ToString();
-                return null;
+                //return null;
             }
         }
     }
