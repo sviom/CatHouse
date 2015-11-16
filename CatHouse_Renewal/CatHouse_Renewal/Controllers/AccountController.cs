@@ -26,7 +26,7 @@ namespace CatHouse_Renewal.Controllers
 
         [HttpPost]
         [ActionName("BeginLogin")]
-        public void BeginLogin(MemberModel memModel)
+        public JavaScriptResult BeginLogin(MemberModel memModel)
         {
             try
             {
@@ -35,17 +35,23 @@ namespace CatHouse_Renewal.Controllers
                 string memPassword = Request.Form["loginMemberPassword"];
 
                 // 로그인 시도
-                bool loginQuery = loginConn.MemberLogin(memEmail, memPassword);
-                if (loginQuery == false)
+                int loginQueryMemID = loginConn.MemberLogin(memEmail, memPassword);
+                if (loginQueryMemID <= 0)
                 {
-                    // 로그인 하려고 하는데 자료가 없으면 에러
+                    // 로그인 하려고 하는데 자료가 없거나 오류이면 에러
                     throw new Exception();
                 }
+
                 // 관련 항목(로그인버튼/이름) 매칭
+                Session["MemberID"] = loginQueryMemID;
+
+
+                return JavaScript("showPopup('Success','성공입니다.',400,400);");
             }
             catch (Exception ex)
             {
                 ex.Message.ToString();
+                return null;
             }
         }
     }
