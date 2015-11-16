@@ -30,25 +30,23 @@ namespace CatHouse_Renewal.Controllers
         {
             try
             {
+                // 해당 항목으로부터 값 얻어오기
                 string memEmail = Request.Form["loginMemberId"];
                 string memPassword = Request.Form["loginMemberPassword"];
 
-                DataSet queryResult = loginConn.MemberLogin(memEmail, memPassword);
+                // 로그인 시도
+                bool loginQuery = loginConn.MemberLogin(memEmail, memPassword);
+                if (loginQuery == false)
+                {
+                    // 로그인 하려고 하는데 자료가 없으면 에러
+                    throw new Exception();
+                }
+                // 관련 항목(로그인버튼/이름) 매칭
             }
             catch (Exception ex)
             {
                 ex.Message.ToString();
             }
-            // 로그인 확인
-            //if(ModelState.IsValid == true)
-            //{
-            //    int returnValue = 0;
-            //    if(returnValue == 0)
-            //    {
-            //        //로그인 성공
-            //        Session[claGlobal.SessionString_UserID] = memModel.memID;
-            //    }
-            //}
         }
     }
 }

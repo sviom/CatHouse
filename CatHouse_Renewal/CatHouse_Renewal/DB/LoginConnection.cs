@@ -15,7 +15,7 @@ namespace CatHouse_Renewal.DB
         // DBConnection 객체에서 받아온 SqlConnection 객체를 받아옴.
         private static SqlConnection conn;
 
-        public DataSet MemberLogin(string memEmail, string memPassword)
+        public bool MemberLogin(string memEmail, string memPassword)
         {
             try
             {
@@ -28,28 +28,24 @@ namespace CatHouse_Renewal.DB
                 }
                 // 고유아이디/이름/나이/성별/중성화상태/사진/상태메모
                 string query = "SELECT memEmail, memPassword FROM dbo.Member WHERE memEmail = '" + memEmail + "' AND memPassword = '" + memPassword + "';";
+                
+                // SQL Command를 작성해서, 실행
+                SqlCommand sqlQuery = new SqlCommand(query, conn);
+                SqlDataReader item = sqlQuery.ExecuteReader();
+                // DB가 데이터를 가지고 있으면 관련된 자료 리턴
+                if (item.HasRows == false)
+                {
+                    // 없으면 에러처리
+                    throw new Exception();
+                }
 
-                SqlDataAdapter ddd = new SqlDataAdapter(query, conn);
-                DataSet ds = new DataSet();
-                ddd.Fill(ds, "dbo.Member");
-
-
-                //SqlCommand sqlQuery = new SqlCommand(query, conn);
-                //SqlDataReader item = sqlQuery.ExecuteReader();
-                //while (item.Read())
-                //{
-                //    item["memEmail"].ToString();
-                //    item["memPassword"].ToString();
-                //}
-                //// 실행
-                //int rows = sqlQuery.ExecuteNonQuery();
                 db.DbClose();
-                return ds;
+                return true;
             }
             catch (SqlException sqlEx)
             {
                 sqlEx.Message.ToString();
-                return null;
+                return false;
             }
         }
     }
