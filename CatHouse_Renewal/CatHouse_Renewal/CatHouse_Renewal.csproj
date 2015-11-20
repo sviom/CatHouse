@@ -227,6 +227,7 @@
     <Content Include="Views\Search\FilterFinder.cshtml" />
     <Content Include="Views\Regist\Registered.cshtml" />
     <Content Include="Views\Account\Login.cshtml" />
+    <Content Include="Views\Search\MainFinder.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

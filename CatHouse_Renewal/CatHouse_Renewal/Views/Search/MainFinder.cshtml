@@ -1,0 +1,54 @@
+﻿<!DOCTYPE html>
+
+<html>
+<head>
+    <title></title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" />
+    <meta charset="UTF-8" />
+
+    <script src="//code.jquery.com/jquery-1.11.3.min.js"></script>
+    <script src="//code.jquery.com/jquery-migrate-1.2.1.min.js"></script>
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" />
+    <link rel="stylesheet" type="text/css" href="~/Contents/common.css" />
+    <link rel="stylesheet" type="text/css" href="~/Contents/regist.css" />
+
+    <script src="~/Contents/common.js"></script>
+
+</head>
+<body>
+    <!--Header Include-->
+    @{Html.RenderPartial("header");}
+
+    <section id="visual"> <img src="~/Contents/Image/speechBalloon.png" /> 당신의 소중한 친구를 맡길 장소를, <span style="font-weight: bold;">찾아보세요.</span> </section>
+    </header>
+
+    <section id="contents">
+        <div class="box1">
+            <span class="title">찾아보기</span>
+            <div id="box_registGeneral" class="innerBox1">
+                <span class="innerTitle">지도로</span>
+                신속하게 찾으실분
+                @*<button class="btn btn_blue">일반회원등록</button>*@
+                <button class="btn btn_blue" title="지도로 찾기" onclick="location.href='@Url.Action("MapFinder", "Search", new { @class="btn btn_dark" })'">지도로 찾기</button>
+            </div>
+            <div id="box_registHouse" class="innerBox1">
+                <span class="innerTitle">검색조건으로</span>
+                상세하게 찾으실 분
+                @*<button class="btn btn_blue">업체회원등록</button>*@
+                <button class="btn btn_blue" title="조건으로 찾기" onclick="location.href='@Url.Action("FilterFinder", "Search", new { @class="btn btn_dark" })'">조건으로 찾기</button>
+            </div>
+        </div>
+        @*<div class="box2">
+            <span class="title">고양이 등록</span>
+            <div id="box_registCat" class="innerBox2">
+                고양이를 등록하실 분
+                <button class="btn btn_dark" title="고양이 등록" onclick="location.href='@Url.Action("CatRegist", "Regist", new { @class="btn btn_dark" })'">고양이 등록</button>
+            </div>
+        </div>*@
+    </section>
+
+    <!--Footer Include-->
+    @{Html.RenderPartial("footer");}
+</body>
+</html>

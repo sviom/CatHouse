@@ -8,6 +8,10 @@ namespace CatHouse_Renewal.Controllers
 {
     public class SearchController : Controller
     {
+        public ActionResult MainFinder()
+        {
+            return View();
+        }
         public ActionResult MapFinder()
         {
             return View();
