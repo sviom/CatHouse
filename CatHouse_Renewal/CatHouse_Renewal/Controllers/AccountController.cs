@@ -25,8 +25,9 @@ namespace CatHouse_Renewal.Controllers
         }
 
         [HttpPost]
+        // POST : ~~ /Account/BeginLogin
         [ActionName("BeginLogin")]
-        public void BeginLogin(MemberModel memModel)
+        public ContentResult BeginLogin()
         {
             try
             {
@@ -44,11 +45,12 @@ namespace CatHouse_Renewal.Controllers
 
                 // 관련 항목(로그인버튼/이름) 매칭
                 Session["MemberID"] = loginQueryMemID;
+                return Content("True");
             }
             catch (Exception ex)
             {
                 ex.Message.ToString();
-                //return null;
+                return Content("False");
             }
         }
     }

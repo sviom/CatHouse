@@ -14,6 +14,14 @@
     <link rel="stylesheet" type="text/css" href="~/Contents/login.css" />
 
     <script src="~/Contents/common.js"></script>
+    <script type="text/javascript">
+        function LoginSuccess() {
+            showPopup("환영합니다!", "고양이하숙에 어서오세요", 400, 200);
+        }
+        function LoginFail() {
+            showPopup("실패했어요..", "로그인에 실패했어요. 아이디와 비밀번호를 확인해보세요.", 400, 200);
+        }
+    </script>
 </head>
 <body>
     <!--Header Include-->
@@ -23,15 +31,16 @@
     </header>
 
     <section id="contents">
-        <form>
+        <!--Ajax.beginform-->
+        @using (Ajax.BeginForm("BeginLogin", "Account",new AjaxOptions { HttpMethod = "POST", OnComplete = "LoginSuccess()", OnFailure = "LoginFail()" }, new { id = "loginFormId" }))
+        {
             <div><span class="formLabel">이메일</span><input type="email" name="loginMemberId" id="loginMemberId" class="formInput t2" /></div>
             <div><span class="formLabel">비밀번호</span><input type="password" name="loginMemberPassword" id="loginMemberPassword" class="formInput t2" /></div>
             <button id="btn_login" class="btn btn_blue">로그인</button>
-            <!--회원 등록화면으로 이동-->
+          <!--회원 등록화면으로 이동-->
             <div><img id="regist" src="~/Contents/Image/regist.png" onclick="location.href='@Url.Action("MainRegist", "Regist")'" /></div>
-        </form>
+        }
     </section>
-
     <!--footer Include-->
     @{Html.RenderPartial("footer");}
 </body>
