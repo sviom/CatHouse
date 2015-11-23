@@ -24,6 +24,11 @@ namespace CatHouse_Renewal.Controllers
             return View();
         }
 
+        public ActionResult MemberInfo()
+        {
+            return View();
+        }
+
         //로그인 메소드
         [HttpPost]
         // POST : ~~ /Account/BeginLogin

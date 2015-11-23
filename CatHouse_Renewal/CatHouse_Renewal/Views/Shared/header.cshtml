@@ -23,7 +23,7 @@
                 if (sessionID > 0)
                 {
                     // 로그인에 성공해서 0이상의 값이 넘어오면 로그아웃 버튼 출력
-                    <a href="#" onclick="location.href='@Url.Action("Login","Account")'">@sessionName 님, 환영합니다.</a>
+                    <a href="#" onclick="location.href='@Url.Action("MemberInfo","Account")'">@sessionName 님, 환영합니다.</a>
                     <img id="btn_login" src="~/Contents/Image/logout.png" onclick="location.href='@Url.Action("BeginLogout","Account")'" />
                 }
                 else
