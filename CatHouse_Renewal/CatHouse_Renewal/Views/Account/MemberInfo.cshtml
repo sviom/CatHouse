@@ -13,7 +13,7 @@
 
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" />
     <link rel="stylesheet" type="text/css" href="~/Contents/common.css" />
-    <link rel="stylesheet" type="text/css" href="~/Contents/registSub.css" />
+    <link rel="stylesheet" type="text/css" href="~/Contents/regist.css" />
 
     <script src="~/Contents/common.js"></script>
 
@@ -24,15 +24,16 @@
 
     <section id="visual"> <img src="~/Contents/Image/pawbubble.png" /> <span style="font-weight: bold;">당신의 정보</span>를 관리하세요.</section>
     </header>
-    <h1 align="center">고양이 하숙은?</h1>
-    <p align="center">
-        고양이를 피치못할 사정으로 잠시 키우지 못할 때 적절한 장소를 찾는 것을<br />
-        도와주는 서비스입니다.<br />
-        고양이하숙 BLOG 으로 이동 : <a href="http://blog.naver.com/psyclub2516" style="color:red;">BLOG</a>
-        <br />
-        고양이하숙 FACEBOOK 으로 이동 : <a href="https://www.facebook.com/hotelcat" style="color:red;">Facebook</a>
-    </p>
-
+    <section id="contents">
+        <div class="box2">
+            <span class="title">회원탈퇴</span>
+            <div id="box_registCat" class="innerBox2">
+                아쉽지만 다음에 만나요!
+                @*<button class="btn btn_dark">고양이 등록</button>*@
+                <button class="btn btn_dark" type="button" title="회원 탈퇴" onclick="location.href='@Url.Action("MemberDrop","Account")'">회원 탈퇴</button>
+            </div>
+        </div>
+    </section>
     <!--Footer Include-->
     @{Html.RenderPartial("footer");}
 </body>

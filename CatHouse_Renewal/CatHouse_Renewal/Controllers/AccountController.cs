@@ -13,7 +13,7 @@ namespace CatHouse_Renewal.Controllers
     public class AccountController : Controller
     {
 
-        // 로그인 관련 DB Connection모음
+        // 로그인 및 Member 관련 DB Connection모음
         LoginConnection loginConn = new LoginConnection();
         // 점검 관련 함수들 모음
         Check check = new Check();
@@ -68,6 +68,26 @@ namespace CatHouse_Renewal.Controllers
             try
             {
                 // 세션을 초기화 한다.
+                Session.Clear();
+                return RedirectToAction("Index", "Home");
+            }
+            catch (Exception ex)
+            {
+                return RedirectToAction("Index", "Home");
+            }
+        }
+
+        // 회원 탈퇴 메소드
+        [ActionName("MemberDrop")]
+        public ActionResult MemberDrop()
+        {
+            try
+            {
+                if(Session["MemberID"] == null)
+                {
+                    throw new Exception();
+                }
+                bool queryResult = loginConn.MemberDrop(Convert.ToInt32(Session["MemberID"]));
                 Session.Clear();
                 return RedirectToAction("Index", "Home");
             }
