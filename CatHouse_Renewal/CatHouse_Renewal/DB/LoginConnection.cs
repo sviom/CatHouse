@@ -40,7 +40,7 @@ namespace CatHouse_Renewal.DB
                     // 없으면 에러처리
                     throw new Exception();
                 }
-
+                // 데이터를 전부 읽어들이면서 ID를 읽어온다.
                 while (item.Read())
                 {
                     memID = Convert.ToInt32(item["memID"]);

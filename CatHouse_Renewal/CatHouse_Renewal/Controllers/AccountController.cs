@@ -62,6 +62,7 @@ namespace CatHouse_Renewal.Controllers
         {
             try
             {
+                // 세션을 초기화 한다.
                 Session.Clear();
                 return RedirectToAction("Index", "Home");
             }

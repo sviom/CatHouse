@@ -22,9 +22,23 @@ namespace CatHouse_Renewal.Controllers
             return View();
         }
 
+        // 메인 레지스트 페이지 접속
         public ActionResult MainRegist()
         {
-            return View();
+            try
+            {
+                // 로그인이 되어 있으면 정상적으로 등록페이지에 들어갈 수 있다.(세션에 들어있는 ID값 이용)
+                if (Convert.ToInt32(Session["MemberID"]) <= 0)
+                {
+                    throw new Exception();
+                }
+                return View();
+            }
+            catch (Exception ex)
+            {
+                // 안되어 있으면 홈으로 되돌아간다.
+                return RedirectToAction("Index", "Home");
+            }
         }
 
         public ActionResult MemberRegist()

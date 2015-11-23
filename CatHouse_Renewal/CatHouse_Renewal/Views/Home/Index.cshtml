@@ -17,6 +17,7 @@
     <link rel="stylesheet" type="text/css" href="~/Contents/main.css" />
 
     <script src="~/Contents/common.js"></script>
+
 </head>
 <body>
     <!--Header Include-->
@@ -29,21 +30,22 @@
             <img class="mainIcon" src="~/Contents/Image/pawstamp.png" />
             <span class="mainTitle">고양이 하숙 소개</span>
             <span class="mainDesc">고양이 하숙에 대해<br />알아보세요!</span>
-            @*<a class="mainGo">소개보기</a>*@
+            <!--<A>태그 생성 및 이동-->
             @Html.ActionLink("소개보기", "About", "Intro", null, new { @class = "mainGo" })
         </div>
         <div class="mainMenu">
             <img class="mainIcon" src="~/Contents/Image/pencil.png" />
             <span class="mainTitle">등록</span>
             <span class="mainDesc">고양이를 맡기기 위해 먼저<br />등록을 해야겠죠?</span>
-            @*<a class="mainGo">등록하기</a>*@
+            <!--<A>태그 생성 및 이동-->
             @Html.ActionLink("등록하기", "MainRegist", "Regist", null, new { @class = "mainGo" })
+
         </div>
         <div class="mainMenu">
             <img class="mainIcon" src="~/Contents/Image/placepin.png" />
             <span class="mainTitle">장소 찾기</span>
             <span class="mainDesc">자신 주변에 탁묘할 만한<br />장소가 있는지 찾아보러 갑니다.</span>
-            @*<a class="mainGo">장소찾기</a>*@
+            <!--<A>태그 생성 및 이동-->
             @Html.ActionLink("장소찾기", "MainFinder", "Search", null, new { @class = "mainGo" })
         </div>
     </section>
