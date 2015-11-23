@@ -1,9 +1,14 @@
 ﻿@{
     // 현재 들어와 있는 페이지의 Controller Name을 얻어온다.
     var pageName = ViewContext.RouteData.Values["controller"].ToString();
-    // 로그인해서 받아온 세션값
-    var sessionID = Convert.ToInt32(Session["MemberID"]);
-    var sessionName = Session["MemberID"].ToString();
+    // 로그인해서 받아온 세션값(아이디와 이름)
+    var sessionID = 0;
+    var sessionName = "";
+    if (Session["MemberID"] != null)
+    {
+        sessionID = Convert.ToInt32(Session["MemberID"]);
+        sessionName = Session["MemberID"].ToString();
+    }
 }
 
 <div class="onlyMobile" id="mobileMenu"></div>
@@ -14,7 +19,6 @@
         <img id="goto_home" class="fl btn_span" src="~/Contents/Image/logo.png" alt="메인 페이지로 이동" onclick="location.href='@Url.Action("Index","Home")'" />
         <div id="wrap_login">
             <!--이름은 로그인이 되어있을 때만 표시한다.-->
-            <!--IF-->
             @{
                 if (sessionID > 0)
                 {
@@ -29,12 +33,9 @@
                     <img id="btn_login" src="~/Contents/Image/login.png" onclick="location.href='@Url.Action("Login", "Account")'" />
                 }
             }
-            
+
         </div>
-        @*<div id="wrap_login">
-                <a href="#">홍길동님</a>
-                <img id="btn_login" src="~/Contents/Image/logout.png" />
-            </div>*@
+
         <ul>
             <!--현재 페이지를 체크하는 if문을  모든 li에 넣고 현재페이지가 해당 제목이면 li에 class='on'을 프린트 한다.-->
             <li class="@(pageName == "Home" ? "on" : "")"><span>@Html.ActionLink("홈", "Index", "Home")</span></li>
