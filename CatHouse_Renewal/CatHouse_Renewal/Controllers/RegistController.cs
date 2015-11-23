@@ -58,6 +58,7 @@ namespace CatHouse_Renewal.Controllers
             return View();
         }
 
+        [HttpPost]
         [ActionName("MemberCreate")]
         public ActionResult MemeberCreate(FormCollection memberForm)
         {
@@ -70,13 +71,14 @@ namespace CatHouse_Renewal.Controllers
                 int memPhone = Convert.ToInt32(Request.Form["memPhone"]);
                 string memAddress = Request.Form["memAddress"];
 
-                // 실제로 체크
+                // 이메일/패스워드 길이 검사
                 bool emailCheck = check.CheckEmail(memEmail);
                 bool passCheck = check.CheckPasswordLength(memPassword);
 
                 // 이메일형식 또는 패스워드 길이가 맞지 않으면
                 if (!emailCheck || !passCheck)
                 {
+                    // 에러
                     throw new Exception();
                 }
 
@@ -88,11 +90,13 @@ namespace CatHouse_Renewal.Controllers
                 newMem.memPhone = memPhone;
                 newMem.memAddress = memAddress;
 
+                // 실제로 DB에 넣는다. 실행 후 성공 여부를 Return 한다.
                 bool queryResult = insertDB.MemberInsert(newMem);
-                // 아이템 추가
+
                 // 결과에 따라서 환영페이지로 이동할지, 오류 메시지 출력 후 홈페이지로 이동할 지 결정
                 if (queryResult)
                 {
+                    // 실제로 DB에 들어갔으면 환영페이지 생성
                     return RedirectToAction("Registered", "Regist");
                 }
                 else
