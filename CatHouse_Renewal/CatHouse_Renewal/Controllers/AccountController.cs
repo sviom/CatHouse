@@ -24,10 +24,11 @@ namespace CatHouse_Renewal.Controllers
             return View();
         }
 
+        //로그인 메소드
         [HttpPost]
         // POST : ~~ /Account/BeginLogin
         [ActionName("BeginLogin")]
-        public ContentResult BeginLogin()
+        public ActionResult BeginLogin()
         {
             try
             {
@@ -45,12 +46,28 @@ namespace CatHouse_Renewal.Controllers
 
                 // 관련 항목(로그인버튼/이름) 매칭
                 Session["MemberID"] = loginQueryMemID;
-                return Content("True");
+                return RedirectToAction("Index", "Home");
             }
             catch (Exception ex)
             {
                 ex.Message.ToString();
-                return Content("False");
+                return RedirectToAction("Index", "Home");
+            }
+        }
+
+        // 로그아웃 메소드
+        // POST : ~~/Account/BeginLogout
+        [ActionName("BeginLogout")]
+        public ActionResult BeginLogout()
+        {
+            try
+            {
+                Session.Clear();
+                return RedirectToAction("Index", "Home");
+            }
+            catch (Exception ex)
+            {
+                return RedirectToAction("Index", "Home");
             }
         }
     }

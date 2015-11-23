@@ -14,14 +14,6 @@
     <link rel="stylesheet" type="text/css" href="~/Contents/login.css" />
 
     <script src="~/Contents/common.js"></script>
-    <script type="text/javascript">
-        function LoginSuccess() {
-            showPopup("환영합니다!", "고양이하숙에 어서오세요", 400, 200);
-        }
-        function LoginFail() {
-            showPopup("실패했어요..", "로그인에 실패했어요. 아이디와 비밀번호를 확인해보세요.", 400, 200);
-        }
-    </script>
 </head>
 <body>
     <!--Header Include-->
@@ -31,8 +23,7 @@
     </header>
 
     <section id="contents">
-        <!--Ajax.beginform-->
-        @using (Ajax.BeginForm("BeginLogin", "Account",new AjaxOptions { HttpMethod = "POST", OnComplete = "LoginSuccess()", OnFailure = "LoginFail()" }, new { id = "loginFormId" }))
+        @using (Html.BeginForm("BeginLogin", "Account", new { id = "loginFormId" }))
         {
             <div><span class="formLabel">이메일</span><input type="email" name="loginMemberId" id="loginMemberId" class="formInput t2" /></div>
             <div><span class="formLabel">비밀번호</span><input type="password" name="loginMemberPassword" id="loginMemberPassword" class="formInput t2" /></div>

@@ -1,6 +1,9 @@
 ﻿@{
     // 현재 들어와 있는 페이지의 Controller Name을 얻어온다.
     var pageName = ViewContext.RouteData.Values["controller"].ToString();
+    // 로그인해서 받아온 세션값
+    var sessionID = Convert.ToInt32(Session["MemberID"]);
+    var sessionName = Session["MemberID"].ToString();
 }
 
 <div class="onlyMobile" id="mobileMenu"></div>
@@ -12,8 +15,21 @@
         <div id="wrap_login">
             <!--이름은 로그인이 되어있을 때만 표시한다.-->
             <!--IF-->
-            <a href="#" onclick="location.href='@Url.Action("Login","Account")'">로그인하세요.</a>
-            <img id="btn_login" src="~/Contents/Image/login.png" onclick="location.href='@Url.Action("Login", "Account")'" />
+            @{
+                if (sessionID > 0)
+                {
+                    // 로그인에 성공해서 0이상의 값이 넘어오면 로그아웃 버튼 출력
+                    <a href="#" onclick="location.href='@Url.Action("Login","Account")'">@sessionName 님, 환영합니다.</a>
+                    <img id="btn_login" src="~/Contents/Image/logout.png" onclick="location.href='@Url.Action("BeginLogout","Account")'" />
+                }
+                else
+                {
+                    <a href="#" onclick="location.href='@Url.Action("Login","Account")'">로그인하세요.</a>
+                    // 로그인하지않았거나 하던 도중 에러가 뜨면 다시 로그인할 수 있게 버튼 출력
+                    <img id="btn_login" src="~/Contents/Image/login.png" onclick="location.href='@Url.Action("Login", "Account")'" />
+                }
+            }
+            
         </div>
         @*<div id="wrap_login">
                 <a href="#">홍길동님</a>
