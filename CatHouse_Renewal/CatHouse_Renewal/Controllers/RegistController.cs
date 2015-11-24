@@ -13,6 +13,8 @@ namespace CatHouse_Renewal.Controllers
 {
     public class RegistController : Controller
     {
+        // 로그인 및 Member 관련 DB Connection모음
+        LoginConnection loginConn = new LoginConnection();
         // Insert 관련 함수들 모음
         InsertDB insertDB = new InsertDB();
         // 점검 관련 함수들 모음
@@ -96,6 +98,18 @@ namespace CatHouse_Renewal.Controllers
                 // 결과에 따라서 환영페이지로 이동할지, 오류 메시지 출력 후 홈페이지로 이동할 지 결정
                 if (queryResult)
                 {
+                    // 세션에 MEM ID생성한 값을 저장한다.
+                    // 로그인 시도
+                    int loginQueryMemID = loginConn.MemberLogin(memEmail, memPassword);
+                    if (loginQueryMemID <= 0)
+                    {
+                        // 로그인 하려고 하는데 자료가 없거나 오류이면 에러
+                        throw new Exception();
+                    }
+
+                    // 관련 항목(로그인버튼/이름) 매칭
+                    Session["MemberID"] = loginQueryMemID;
+
                     // 실제로 DB에 들어갔으면 환영페이지 생성
                     return RedirectToAction("Registered", "Regist");
                 }

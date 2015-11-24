@@ -36,15 +36,47 @@ namespace CatHouse_Renewal.DB
                 else
                 {
                     // 고유아이디/이름/나이/성별/중성화상태/사진/상태메모
-                    string query = "INSERT INTO dbo.Member (memName,memPassword,memAddress,memEmail,memPhone) VALUES (@memName,@memPassword,@memAddress,@memEmail,@memPhone)";
-                    SqlCommand sqlQuery = new SqlCommand(query, conn);
-                    sqlQuery.Parameters.AddWithValue("@memName", memItem.memName);
-                    sqlQuery.Parameters.AddWithValue("@memPassword", memItem.memPassword);
-                    sqlQuery.Parameters.AddWithValue("@memAddress", memItem.memAddress);
-                    sqlQuery.Parameters.AddWithValue("@memEmail", memItem.memEmail);
-                    sqlQuery.Parameters.AddWithValue("@memPhone", memItem.memPhone);
-                    // 실행
-                    int rows = sqlQuery.ExecuteNonQuery();
+                    SqlCommand createMemSqlQuery = new SqlCommand("P_CREATE_NEW_MEMBER", conn);
+                    // 데이터 입력 형식은 저장 프로시저
+                    createMemSqlQuery.CommandType = CommandType.StoredProcedure;
+                    //@MemberName @MemberEmail @MemberPassword @MemberPhone @MemberAddress
+                    
+                    // 파라미터 지정
+                    SqlParameter memEmail = new SqlParameter("@MemberEmail", SqlDbType.NVarChar);
+                    SqlParameter memName = new SqlParameter("@MemberName", SqlDbType.NVarChar);
+                    SqlParameter memPassword = new SqlParameter("@MemberPassword", SqlDbType.NVarChar);
+                    SqlParameter memPhone = new SqlParameter("@MemberPhone", SqlDbType.Int);
+                    SqlParameter memAddress = new SqlParameter("@MemberAddress", SqlDbType.NVarChar);
+                    SqlParameter createMemReturn = new SqlParameter();      //리턴 파라미터
+                    // 입력 방향 지정
+                    memEmail.Direction = ParameterDirection.Input;
+                    memName.Direction = ParameterDirection.Input;
+                    memPassword.Direction = ParameterDirection.Input;
+                    memPhone.Direction = ParameterDirection.Input;
+                    memAddress.Direction = ParameterDirection.Input;
+                    createMemReturn.Direction = ParameterDirection.ReturnValue;
+                    // 값 설정
+                    memEmail.Value = memItem.memEmail;
+                    memName.Value = memItem.memName;
+                    memPassword.Value = memItem.memPassword;
+                    memPhone.Value = memItem.memPhone;
+                    memAddress.Value = memItem.memAddress;
+
+                    // Output param
+                    //SqlParameter pOutput = new SqlParameter("@out", SqlDbType.Int);
+                    //pOutput.Direction = ParameterDirection.Output;
+                    //createMemSqlQuery.Parameters.Add(pOutput);
+
+                    // 설정한 프로시저의 파라미터들을 SqlCommand의 파라미터로 추가한다.
+                    createMemSqlQuery.Parameters.Add(memEmail);
+                    createMemSqlQuery.Parameters.Add(memName);
+                    createMemSqlQuery.Parameters.Add(memPassword);
+                    createMemSqlQuery.Parameters.Add(memPhone);
+                    createMemSqlQuery.Parameters.Add(memAddress);
+                    createMemSqlQuery.Parameters.Add(createMemReturn);      // 리턴 값
+
+                    // 쿼리 실행ㅔ
+                    int rows = createMemSqlQuery.ExecuteNonQuery();
                 }
                 db.DbClose();
                 return true;
@@ -70,41 +102,9 @@ namespace CatHouse_Renewal.DB
                 }
                 else
                 {
-                    // 고유아이디/이름/나이/성별/중성화상태/사진/상태메모
-                    SqlCommand createMemSqlQuery = new SqlCommand("P_CREATE_NEW_MEMBER", conn);
-                    // 데이터 입력 형식은 저장 프로시저
-                    createMemSqlQuery.CommandType = CommandType.StoredProcedure;
-                    sqlQuery.Parameters.AddWithValue("@name", catItem.catName);
-                    sqlQuery.Parameters.AddWithValue("@age", catItem.catAge);
-                    sqlQuery.Parameters.AddWithValue("@gender", catItem.catGender);
-                    sqlQuery.Parameters.AddWithValue("@netu", catItem.catNeuter);
-                    sqlQuery.Parameters.AddWithValue("@memo", catItem.catMemo);
-                    sqlQuery.Parameters.AddWithValue("@url", catItem.catPhotoURL);
-
-                    // Input param
-                    SqlParameter pInput = new SqlParameter("@in", SqlDbType.Int);
-                    pInput.Direction = ParameterDirection.Input;
-                    pInput.Value = 1;
-                    createMemSqlQuery.Parameters.Add(pInput);
-
-                    // Output param
-                    SqlParameter pOutput = new SqlParameter("@out", SqlDbType.Int);
-                    pOutput.Direction = ParameterDirection.Output;
-                    createMemSqlQuery.Parameters.Add(pOutput);
-
-                    // Return value
-                    SqlParameter pReturn = new SqlParameter();
-                    pReturn.Direction = ParameterDirection.ReturnValue;
-                    createMemSqlQuery.Parameters.Add(pReturn);
-
-                    // Run SP
-                    createMemSqlQuery.ExecuteNonQuery();
-
-                    Console.WriteLine(pOutput.Value); // output
-                    Console.WriteLine(pReturn.Value); // return value
 
                     // 실행
-                    int rows = sqlQuery.ExecuteNonQuery();
+                    //int rows = sqlQuery.ExecuteNonQuery();
                 }
                 db.DbClose();
                 return true;

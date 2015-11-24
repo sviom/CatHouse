@@ -68,7 +68,7 @@ namespace CatHouse_Renewal.DB
                     conn.Open();
                 }
                 // 고유아이디/이름/나이/성별/중성화상태/사진/상태메모
-                string query = "DELETE  FROM dbo.Member WHERE memID=" + memID + ";";
+                string query = "DELETE FROM dbo.Member WHERE memID=" + memID + ";";
 
                 // SQL Command를 작성해서, 실행
                 SqlCommand sqlQuery = new SqlCommand(query, conn);
