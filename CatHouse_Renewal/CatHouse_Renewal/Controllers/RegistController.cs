@@ -3,8 +3,6 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
-
-
 using CatHouse_Renewal.Controllers;
 using CatHouse_Renewal.DB;
 using CatHouse_Renewal.Models;
@@ -19,6 +17,8 @@ namespace CatHouse_Renewal.Controllers
         InsertDB insertDB = new InsertDB();
         // 점검 관련 함수들 모음
         Check check = new Check();
+
+        // 고양이 등록 페이지로 이동
         public ActionResult CatRegist()
         {
             try
@@ -37,17 +37,19 @@ namespace CatHouse_Renewal.Controllers
             }
         }
 
-        // 메인 레지스트 페이지 접속
+        // 메인 등록 페이지로 이동
         public ActionResult MainRegist()
         {
             return View();
         }
 
+        // 회원 등록 페이지로 이동
         public ActionResult MemberRegist()
         {
             return View();
         }
 
+        // 업체 회원 등록페이지로 이동
         public ActionResult TraderRegist()
         {
             try
@@ -66,6 +68,7 @@ namespace CatHouse_Renewal.Controllers
             }
         }
 
+        // 등록 성공 후 환영페이지로 이동
         [HttpPost]
         [ActionName("Registered")]
         public ActionResult Registered()
@@ -73,6 +76,7 @@ namespace CatHouse_Renewal.Controllers
             return View();
         }
 
+        // 회원 등록
         [HttpPost]
         [ActionName("MemberCreate")]
         public ActionResult MemeberCreate(FormCollection memberForm)
@@ -141,6 +145,7 @@ namespace CatHouse_Renewal.Controllers
             }
         }
 
+        // 고양이 등록
         [HttpPost]
         [ActionName("CatCreate")]
         public ActionResult CatCreate()
@@ -203,6 +208,7 @@ namespace CatHouse_Renewal.Controllers
             }
         }
 
+        // 업자 회원 등록
         [HttpPost]
         [ActionName("TraderCreate")]
         public ActionResult TraderCreate()

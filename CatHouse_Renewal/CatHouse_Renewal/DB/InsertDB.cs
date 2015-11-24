@@ -88,7 +88,11 @@ namespace CatHouse_Renewal.DB
             }
         }
 
-
+        /// <summary>
+        /// 고양이 등록 함수는 회원을 등록 할 때 NULL값이 포함된 것이 하나가 이미 만들어져 있기 때문에 UPDATE
+        /// </summary>
+        /// <param name="catItem"></param>
+        /// <returns>true/false</returns>
         // 고양이를 DB에 넣기
         public bool CatInsertToDB(CatModel catItem)
         {
@@ -103,10 +107,11 @@ namespace CatHouse_Renewal.DB
                 else
                 {
                     // catName,catAge,catNetu,catGender,catMemo,catPhotoURL  검색 조건memID
-                    // 고유아이디/이름/나이/성별/중성화상태/사진/상태메모
+                    // 고유아이디/이름/나이/성별/중성화상태/사진/상태메모 쿼리 생성
                     string query = "UPDATE dbo.CatModel SET catName=@catName, catAge=@catAge, catNetu=@catNetu,catGender=@catGender,catMemo=@catMemo,catPhotoURL=@catPhotoURL WHERE memID = " + catItem.memID + ";";
-                    //string query = "INSERT INTO dbo.CatModel (catName,catAge,catNetu,catGender,catMemo,catPhotoURL) VALUES @catName,@catAge,@catNetu,@catGender,@catMemo,@catPhotoURL) WHERE memID = " + catItem.memID + ";";
+                    // 커맨드 생성
                     SqlCommand sqlQuery = new SqlCommand(query, conn);
+                    // 커맨드에 파라미터 추가
                     sqlQuery.Parameters.AddWithValue("@catName", catItem.catName);
                     sqlQuery.Parameters.AddWithValue("@catAge", catItem.catAge);
                     sqlQuery.Parameters.AddWithValue("@catNetu", catItem.catNeuter);
@@ -131,6 +136,11 @@ namespace CatHouse_Renewal.DB
             }
         }
 
+        /// <summary>
+        /// 업자 등록 함수는 회원을 등록할 때 NULL값이 포함된 것이 또한차례 만들어져 있기 때문에 UPDATE로 처리
+        /// </summary>
+        /// <param name="tmemItem"></param>
+        /// <returns>true/false</returns>
         //업자 회원 추가
         public bool TraderMemberInsertToDB(TraderModel tmemItem)
         {
@@ -146,7 +156,9 @@ namespace CatHouse_Renewal.DB
                 {
                     // 고유아이디/이름/나이/성별/중성화상태/사진/상태메모
                     string query = "UPDATE dbo.TraderMember SET homePrice=@homePrice, existPetintro=@existPetintro, existPet=@existPet,homePhotoURL=@homePhotoURL,homeIntro=@homeIntro,homeAddress=@homeAddress WHERE memID = " + tmemItem.memID + ";";
+                    // 커맨드 생성
                     SqlCommand sqlQuery = new SqlCommand(query, conn);
+                    // 커맨드에 파라미터 추가
                     sqlQuery.Parameters.AddWithValue("@homePrice", tmemItem.homePrice);
                     sqlQuery.Parameters.AddWithValue("@existPetintro", tmemItem.existPetIntro);
                     sqlQuery.Parameters.AddWithValue("@existPet", tmemItem.existPet);

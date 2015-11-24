@@ -1,4 +1,5 @@
 ﻿using CatHouse_Renewal.Models;
+using Newtonsoft.Json.Linq;
 using System;
 using System.Collections.Generic;
 using System.Data;
@@ -15,12 +16,14 @@ namespace CatHouse_Renewal.DB
         // DBConnection 객체에서 받아온 SqlConnection 객체를 받아옴.
         private static SqlConnection conn;
 
-        public int MemberLogin(string memEmail, string memPassword)
+        // 회원 로그인
+        public SessionData MemberLogin(string memEmail, string memPassword)
         {
             try
             {
-                // 돌아오는 멤버 ID를 저장하기 위한 변수
-                int memID = 0;
+                // 돌아오는 멤버 ID 및 이름을 저장하기 위한 객체
+                SessionData sessionData = new SessionData();
+                
                 // DB를 새로 연다.
                 conn = db.DbOpen();
                 //열려 있으면 사용한다.
@@ -29,7 +32,7 @@ namespace CatHouse_Renewal.DB
                     conn.Open();
                 }
                 // 고유아이디/이름/나이/성별/중성화상태/사진/상태메모
-                string query = "SELECT memID, memEmail, memPassword FROM dbo.Member WHERE memEmail = '" + memEmail + "' AND memPassword = '" + memPassword + "';";
+                string query = "SELECT memID, memName, memPassword FROM dbo.Member WHERE memEmail = '" + memEmail + "' AND memPassword = '" + memPassword + "';";
 
                 // SQL Command를 작성해서, 실행
                 SqlCommand sqlQuery = new SqlCommand(query, conn);
@@ -43,16 +46,24 @@ namespace CatHouse_Renewal.DB
                 // 데이터를 전부 읽어들이면서 ID를 읽어온다.
                 while (item.Read())
                 {
-                    memID = Convert.ToInt32(item["memID"]);
+                    sessionData.MemberID = Convert.ToInt32(item["memID"]);
+                    sessionData.MemberName = item["memName"].ToString();
                 }
                 db.DbClose();
-                return memID;
+                
+                return sessionData;
             }
             catch (SqlException sqlEx)
             {
                 sqlEx.Message.ToString();
-                return -1;
+                return null;
             }
+        }
+
+        public class SessionData
+        {
+            public string MemberName { get; set; }
+            public int MemberID { get; set; }
         }
     }
 }

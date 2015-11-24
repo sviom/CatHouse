@@ -44,15 +44,16 @@ namespace CatHouse_Renewal.Controllers
                 string memPassword = Request.Form["loginMemberPassword"];
 
                 // 로그인 시도
-                int loginQueryMemID = loginConn.MemberLogin(memEmail, memPassword);
-                if (loginQueryMemID <= 0)
+                LoginConnection.SessionData loginQuery = loginConn.MemberLogin(memEmail, memPassword);
+                if (loginQuery.MemberID <= 0)
                 {
                     // 로그인 하려고 하는데 자료가 없거나 오류이면 에러
                     throw new Exception();
                 }
 
                 // 관련 항목(로그인버튼/이름) 매칭
-                Session["MemberID"] = loginQueryMemID;
+                Session["MemberID"] = loginQuery.MemberID;
+                Session["MemberName"] = loginQuery.MemberName;
                 return RedirectToAction("Index", "Home");
             }
             catch (Exception ex)
