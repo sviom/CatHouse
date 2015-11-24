@@ -46,7 +46,20 @@ namespace CatHouse_Renewal.Controllers
         // 회원 등록 페이지로 이동
         public ActionResult MemberRegist()
         {
-            return View();
+            try
+            {
+                // 로그인이 되어 있으면 회원가입을 할 수 없다.(세션에 들어있는 ID값 이용)
+                if (Convert.ToInt32(Session["MemberID"]) > 0)
+                {
+                    throw new Exception();
+                }
+                return View();
+            }
+            catch (Exception ex)
+            {
+                // 안되어 있으면 홈으로 되돌아간다.
+                return RedirectToAction("Index", "Home");
+            }
         }
 
         // 업체 회원 등록페이지로 이동
@@ -117,15 +130,16 @@ namespace CatHouse_Renewal.Controllers
                 {
                     // 세션에 MEM ID생성한 값을 저장한다.
                     // 로그인 시도
-                    int loginQueryMemID = loginConn.MemberLogin(memEmail, memPassword);
-                    if (loginQueryMemID <= 0)
+                    LoginConnection.SessionData loginQuery = loginConn.MemberLogin(memEmail, memPassword);
+                    if (loginQuery.MemberID <= 0)
                     {
                         // 로그인 하려고 하는데 자료가 없거나 오류이면 에러
                         throw new Exception();
                     }
 
                     // 관련 항목(로그인버튼/이름) 매칭
-                    Session["MemberID"] = loginQueryMemID;
+                    Session["MemberID"] = loginQuery.MemberID;
+                    Session["MemberName"] = loginQuery.MemberName;
 
                     // 실제로 DB에 들어갔으면 환영페이지 생성
                     return RedirectToAction("Registered", "Regist");

@@ -170,6 +170,7 @@
     <Compile Include="Models\CatModel.cs" />
     <Compile Include="Models\MemberModel.cs" />
     <Compile Include="Models\TraderModel.cs" />
+    <Compile Include="Other\Encrypter.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
