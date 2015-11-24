@@ -50,10 +50,23 @@ namespace CatHouse_Renewal.Controllers
 
         public ActionResult TraderRegist()
         {
-            return View();
+            try
+            {
+                // 로그인이 되어 있으면 정상적으로 등록페이지에 들어갈 수 있다.(세션에 들어있는 ID값 이용)
+                if (Convert.ToInt32(Session["MemberID"]) <= 0)
+                {
+                    throw new Exception();
+                }
+                return View();
+            }
+            catch (Exception ex)
+            {
+                // 안되어 있으면 홈으로 되돌아간다.
+                return RedirectToAction("Index", "Home");
+            }
         }
 
-
+        [HttpPost]
         [ActionName("Registered")]
         public ActionResult Registered()
         {
@@ -134,7 +147,7 @@ namespace CatHouse_Renewal.Controllers
         {
             try
             {
-                //고유아이디/이름/나이/성별/중성화상태/사진/상태메모
+                // 고유아이디/이름/나이/성별/중성화상태/사진/상태메모
                 string catName = Request.Form["catName"];
                 string catAge = Request.Form["catAge"];
                 string catGender = Request.Form["catGender"];
@@ -142,12 +155,14 @@ namespace CatHouse_Renewal.Controllers
                 string catMemo = Request.Form["catMemo"];
                 string catURL = Request.Form["catURL"];
 
+                // 새로운 고양이 생성
                 CatModel newCat = new CatModel();
                 newCat.catName = catName;
                 newCat.catAge = Convert.ToInt32(catAge);
                 newCat.catMemo = catMemo;
                 //newCat.catPhotoURL = catURL;
-                newCat.catPhotoURL = "일단NULL";
+                newCat.catPhotoURL = "NotPhotoURL";
+
                 // 수컷인지 암컷인지 판별
                 if (catGender.Equals("male"))
                 {
@@ -168,23 +183,23 @@ namespace CatHouse_Renewal.Controllers
                 {
                     newCat.catNeuter = 0;
                 }
+                // FK로 연동되는 MemberID
+                newCat.memID = Convert.ToInt32(Session["MemberID"]);
 
                 // 최종 결과
                 bool queryResult = insertDB.CatInsertToDB(newCat);
-                if (queryResult)
-                {
-                    // 알람 띄워주고 
-                    return RedirectToAction("Index", "Home");
-                }
-                else
+                // 결과에 에러가 있으면 오류페이지로 이동
+                if (queryResult == false)
                 {
                     throw new Exception();
                 }
+                // 알람 띄워주고 
+                return RedirectToAction("Index", "Home");
             }
             catch (Exception ex)
             {
                 ex.Message.ToString();
-                return RedirectToAction("Index", "Home");
+                return RedirectToAction("CommonError", "Home");
             }
         }
 
@@ -207,19 +222,18 @@ namespace CatHouse_Renewal.Controllers
                 newTraderMem.existPetIntro = "기존에 있는 동물 소개";
                 newTraderMem.homeAddress = "구로구항동";
                 newTraderMem.homePhotoURL = "어딘가에 있을사진";
+                // FK로 연동되는 MemberID
+                newTraderMem.memID = Convert.ToInt32(Session["MemberID"]);
 
                 // 아이템 추가
                 bool queryResult = insertDB.TraderMemberInsertToDB(newTraderMem);
 
-                if (queryResult)
-                {
-                    // 환영 showPopup을 띄운 후 이동
-                    return RedirectToAction("Index", "Home");
-                }
-                else
+                if (queryResult == false)
                 {
                     throw new Exception();
                 }
+                // 환영 showPopup을 띄운 후 이동
+                return RedirectToAction("Index", "Home");
             }
             catch (Exception ex)
             {

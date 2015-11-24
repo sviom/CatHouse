@@ -28,5 +28,8 @@ namespace CatHouse_Renewal.Models
 
         // 집 주소
         public string homeAddress { get; set; }
+
+        // FK로 연동되는 멤버 아이디
+        public int memID { get; set; }
     }
 }

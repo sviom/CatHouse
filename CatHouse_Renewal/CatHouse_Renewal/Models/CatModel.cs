@@ -29,5 +29,8 @@ namespace CatHouse_Renewal.Models
 
         // 고양이 관련된 메모
         public string catMemo { get; set; }
+
+        // FK로 연동되는 멤버 아이디
+        public int memID { get; set; }
     }
 }

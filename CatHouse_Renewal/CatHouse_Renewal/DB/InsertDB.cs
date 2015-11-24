@@ -40,7 +40,7 @@ namespace CatHouse_Renewal.DB
                     // 데이터 입력 형식은 저장 프로시저
                     createMemSqlQuery.CommandType = CommandType.StoredProcedure;
                     //@MemberName @MemberEmail @MemberPassword @MemberPhone @MemberAddress
-                    
+
                     // 파라미터 지정
                     SqlParameter memEmail = new SqlParameter("@MemberEmail", SqlDbType.NVarChar);
                     SqlParameter memName = new SqlParameter("@MemberName", SqlDbType.NVarChar);
@@ -102,9 +102,24 @@ namespace CatHouse_Renewal.DB
                 }
                 else
                 {
-
-                    // 실행
-                    //int rows = sqlQuery.ExecuteNonQuery();
+                    // catName,catAge,catNetu,catGender,catMemo,catPhotoURL  검색 조건memID
+                    // 고유아이디/이름/나이/성별/중성화상태/사진/상태메모
+                    string query = "UPDATE dbo.CatModel SET catName=@catName, catAge=@catAge, catNetu=@catNetu,catGender=@catGender,catMemo=@catMemo,catPhotoURL=@catPhotoURL WHERE memID = " + catItem.memID + ";";
+                    //string query = "INSERT INTO dbo.CatModel (catName,catAge,catNetu,catGender,catMemo,catPhotoURL) VALUES @catName,@catAge,@catNetu,@catGender,@catMemo,@catPhotoURL) WHERE memID = " + catItem.memID + ";";
+                    SqlCommand sqlQuery = new SqlCommand(query, conn);
+                    sqlQuery.Parameters.AddWithValue("@catName", catItem.catName);
+                    sqlQuery.Parameters.AddWithValue("@catAge", catItem.catAge);
+                    sqlQuery.Parameters.AddWithValue("@catNetu", catItem.catNeuter);
+                    sqlQuery.Parameters.AddWithValue("@catGender", catItem.catGender);
+                    sqlQuery.Parameters.AddWithValue("@catMemo", catItem.catMemo);
+                    sqlQuery.Parameters.AddWithValue("@catPhotoURL", catItem.catPhotoURL);
+                    // 쿼리문 실행
+                    int rows = sqlQuery.ExecuteNonQuery();
+                    // 영향을 받은 행의 갯수가 없으면 에러
+                    if (rows <= 0)
+                    {
+                        throw new Exception();
+                    }
                 }
                 db.DbClose();
                 return true;
@@ -130,7 +145,7 @@ namespace CatHouse_Renewal.DB
                 else
                 {
                     // 고유아이디/이름/나이/성별/중성화상태/사진/상태메모
-                    string query = "INSERT INTO dbo.TraderMember (homePrice,existPetintro,existPet,homePhotoURL,homeIntro,homeAddress) VALUES (@homePrice,@existPetintro,@existPet,@homePhotoURL,@homeIntro,@homeAddress)";
+                    string query = "UPDATE dbo.TraderMember SET homePrice=@homePrice, existPetintro=@existPetintro, existPet=@existPet,homePhotoURL=@homePhotoURL,homeIntro=@homeIntro,homeAddress=@homeAddress WHERE memID = " + tmemItem.memID + ";";
                     SqlCommand sqlQuery = new SqlCommand(query, conn);
                     sqlQuery.Parameters.AddWithValue("@homePrice", tmemItem.homePrice);
                     sqlQuery.Parameters.AddWithValue("@existPetintro", tmemItem.existPetIntro);
