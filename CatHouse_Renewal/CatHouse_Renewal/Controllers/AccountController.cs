@@ -15,6 +15,8 @@ namespace CatHouse_Renewal.Controllers
 
         // 로그인 및 Member 관련 DB Connection모음
         LoginConnection loginConn = new LoginConnection();
+        // 회원삭제 및 기타 삭제 관련
+        RemoveDB deleteMethod = new RemoveDB();
         // 점검 관련 함수들 모음
         Check check = new Check();
 
@@ -29,7 +31,7 @@ namespace CatHouse_Renewal.Controllers
             return View();
         }
 
-        //로그인 메소드
+        //로그인 액션
         [HttpPost]
         // POST : ~~ /Account/BeginLogin
         [ActionName("BeginLogin")]
@@ -60,7 +62,7 @@ namespace CatHouse_Renewal.Controllers
             }
         }
 
-        // 로그아웃 메소드
+        // 로그아웃 액션
         // POST : ~~/Account/BeginLogout
         [ActionName("BeginLogout")]
         public ActionResult BeginLogout()
@@ -77,7 +79,7 @@ namespace CatHouse_Renewal.Controllers
             }
         }
 
-        // 회원 탈퇴 메소드
+        // 회원 탈퇴 액션
         [ActionName("MemberDrop")]
         public ActionResult MemberDrop()
         {
@@ -88,7 +90,7 @@ namespace CatHouse_Renewal.Controllers
                 {
                     throw new Exception();
                 }
-                bool queryResult = loginConn.MemberDrop(Convert.ToInt32(Session["MemberID"]));
+                bool queryResult = deleteMethod.MemberDrop(Convert.ToInt32(Session["MemberID"]));
                 // 로그인이 실패할 경우 에러페이지로 이동
                 if(queryResult == false)
                 {
