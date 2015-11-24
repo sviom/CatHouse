@@ -21,5 +21,11 @@ namespace CatHouse_Renewal.Controllers
         {
             return View();
         }
+
+        // 에러페이지로 이동
+        public ActionResult CommonError()
+        {
+            return View();
+        }
     }
 }

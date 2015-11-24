@@ -83,17 +83,23 @@ namespace CatHouse_Renewal.Controllers
         {
             try
             {
+                // 세션에 값이 없을 경우 에러페이지로 이동
                 if(Session["MemberID"] == null)
                 {
                     throw new Exception();
                 }
                 bool queryResult = loginConn.MemberDrop(Convert.ToInt32(Session["MemberID"]));
+                // 로그인이 실패할 경우 에러페이지로 이동
+                if(queryResult == false)
+                {
+                    throw new Exception();
+                }
                 Session.Clear();
                 return RedirectToAction("Index", "Home");
             }
             catch (Exception ex)
             {
-                return RedirectToAction("Index", "Home");
+                return RedirectToAction("CommonError", "Home");
             }
         }
     }
