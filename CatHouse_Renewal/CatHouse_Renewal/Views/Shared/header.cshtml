@@ -46,6 +46,20 @@
             @*<li><span>검색</span></li>*@
             <li class="@(pageName == "Search" ? "on" : "")"><span>@Html.ActionLink("검색", "MainFinder", "Search")</span></li>
 
-            <li class="onlyMobile"><span>홍길동님 | 로그아웃</span></li>
+
+            <!--로그인 / 로그아웃 / 개인정보페이지 이동 모바일 페이지전용-->
+            @{
+                if (sessionID > 0)
+                {
+                    // 로그인에 성공해서 0이상의 값이 넘어오면 로그아웃 버튼 및 이름 출력
+                    <li class="onlyMobile" onclick="location.href='@Url.Action("MemberInfo","Account")'"><span>@sessionName 님 | <a href="#" onclick="location.href='@Url.Action("BeginLogout","Account")'">로그아웃</a></span></li>
+                }
+                else
+                {
+                    // 로그인이 되어있지 않으면 로그인페이지로 이동시키기
+                    <li class="onlyMobile"><span><a href="#" onclick="location.href='@Url.Action("Login","Account")'">로그인</a></span></li>
+                }
+            }
+            @*<li class="onlyMobile"><span>홍길동님 | 로그아웃</span></li>*@
         </ul>
     </menu>

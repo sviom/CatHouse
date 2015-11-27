@@ -25,12 +25,19 @@
     <section id="visual"> <img src="~/Contents/Image/pawbubble.png" /> <span style="font-weight: bold;">당신의 정보</span>를 관리하세요.</section>
     </header>
     <section id="contents">
-        <div class="box2">
-            <span class="title">회원탈퇴</span>
-            <div id="box_registCat" class="innerBox2">
+        <div class="box1">
+            <span class="title">정보 변경</span>
+            <div id="box_registGeneral" class="innerBox1">
+                <span class="innerTitle">비밀번호 바꾸기</span>
+                주기적으로 바꾸세요!
+                @*<button class="btn btn_blue">일반회원등록</button>*@
+                <button class="btn btn_blue" type="button" title="일반회원등록" onclick="location.href='@Url.Action("MemberRegist", "Regist")'">비밀번호 변경</button>
+            </div>
+            <div id="box_registHouse" class="innerBox1">
+                <span class="innerTitle">회원탈퇴</span>
                 아쉽지만 다음에 만나요!
-                @*<button class="btn btn_dark">고양이 등록</button>*@
-                <button class="btn btn_dark" type="button" title="회원 탈퇴" onclick="location.href='@Url.Action("MemberDrop","Account")'">회원 탈퇴</button>
+                @*<button class="btn btn_blue">업체회원등록</button>*@
+                <button class="btn btn_blue" type="button" title="업체회원등록" onclick="location.href='@Url.Action("MemberDrop", "Account")'">회원 탈퇴</button>
             </div>
         </div>
     </section>
