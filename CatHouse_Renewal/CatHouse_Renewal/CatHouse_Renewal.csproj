@@ -231,6 +231,7 @@
     <Content Include="Views\Search\MainFinder.cshtml" />
     <Content Include="Views\Account\MemberInfo.cshtml" />
     <Content Include="Views\Home\CommonError.cshtml" />
+    <Content Include="Views\Account\PasswordChange.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

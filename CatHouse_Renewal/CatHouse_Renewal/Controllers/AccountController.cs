@@ -20,13 +20,20 @@ namespace CatHouse_Renewal.Controllers
         // 점검 관련 함수들 모음
         Check check = new Check();
 
-        // GET: Account
+        // 로그인 페이지로 이동
         public ActionResult Login()
         {
             return View();
         }
 
+        // 개인정보 페이지로 이동
         public ActionResult MemberInfo()
+        {
+            return View();
+        }
+
+        // 비밀번호 변경 페이지로 이동
+        public ActionResult PasswordChange()
         {
             return View();
         }
@@ -87,13 +94,13 @@ namespace CatHouse_Renewal.Controllers
             try
             {
                 // 세션에 값이 없을 경우 에러페이지로 이동
-                if(Session["MemberID"] == null)
+                if (Session["MemberID"] == null)
                 {
                     throw new Exception();
                 }
                 bool queryResult = deleteMethod.MemberDrop(Convert.ToInt32(Session["MemberID"]));
                 // 로그인이 실패할 경우 에러페이지로 이동
-                if(queryResult == false)
+                if (queryResult == false)
                 {
                     throw new Exception();
                 }
@@ -104,6 +111,14 @@ namespace CatHouse_Renewal.Controllers
             {
                 return RedirectToAction("CommonError", "Home");
             }
+        }
+
+        // 비밀번호 변경
+        [HttpPost]
+        [ActionName("ChangePassword")]
+        public void ChagnePassword()
+        {
+
         }
     }
 }
