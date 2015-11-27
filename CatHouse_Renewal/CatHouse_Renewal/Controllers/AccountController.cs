@@ -17,6 +17,8 @@ namespace CatHouse_Renewal.Controllers
         LoginConnection loginConn = new LoginConnection();
         // 회원삭제 및 기타 삭제 관련
         RemoveDB deleteMethod = new RemoveDB();
+        // 회원 정보 및 기타 업데이트 관련 
+        UpdateDB updateMethod = new UpdateDB();
         // 점검 관련 함수들 모음
         Check check = new Check();
 
@@ -116,9 +118,37 @@ namespace CatHouse_Renewal.Controllers
         // 비밀번호 변경
         [HttpPost]
         [ActionName("ChangePassword")]
-        public void ChagnePassword()
+        public ActionResult ChangePassword()
         {
+            try
+            {
+                // 비밀번호 사용자 입력값
+                string oldPassword = Request.Form["oldPassword"];
+                string newPassword = Request.Form["newPassword"];
 
+                if (oldPassword.Equals(newPassword))
+                {
+                    // 비밀번호가 같으면 안됨.
+                }
+                bool passwordCheck = check.CheckPasswordLength(newPassword);
+                if (!passwordCheck)
+                {
+                    // 비밀번호 규칙에 안맞으면 에러
+                }
+                bool changeResult = updateMethod.ChangePassword(oldPassword, newPassword);
+                if (!changeResult)
+                {
+                    // 비밀번호 변경 실패
+                }
+                // 비밀번호변경으로 인해 재로그인해주세요 라는 메시지를 출력한 후 홈화면으로 간다.
+                Session.Clear();
+                return RedirectToAction("Index", "Home");
+            }
+            catch(Exception ex)
+            {
+                ex.Message.ToString();
+                return RedirectToAction("Index", "Home");
+            }
         }
     }
 }
