@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text.RegularExpressions;
 using System.Web;
 
-namespace CatHouse_Renewal.Controllers
+namespace CatHouse_Renewal.Other
 {
     public class Check
     {

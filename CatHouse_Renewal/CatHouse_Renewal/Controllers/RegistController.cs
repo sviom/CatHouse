@@ -6,6 +6,7 @@ using System.Web.Mvc;
 using CatHouse_Renewal.Controllers;
 using CatHouse_Renewal.DB;
 using CatHouse_Renewal.Models;
+using CatHouse_Renewal.Other;
 
 namespace CatHouse_Renewal.Controllers
 {
