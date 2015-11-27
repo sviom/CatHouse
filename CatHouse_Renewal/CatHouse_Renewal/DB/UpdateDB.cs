@@ -13,6 +13,7 @@ namespace CatHouse_Renewal.DB
         // DBConnection 객체에서 받아온 SqlConnection 객체를 받아옴.
         private static SqlConnection conn;
 
+        // 비밀번호 변경
         public bool ChangePassword(string oldPassword, string newPassword)
         {
             try
