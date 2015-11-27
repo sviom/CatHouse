@@ -13,11 +13,33 @@
 
     <script src="~/Contents/common.js"></script>
 
-    @*<script>
-        function formSubmit() {
-            document.frm.formSubmit();
+    <!--autoload=false 파라미터를 이용하여 자동으로 로딩되는 것을 막습니다.-->
+
+    <script src="http://dmaps.daum.net/map_js_init/postcode.v2.js?autoload=false"></script>
+
+    <script>
+
+        //load함수를 이용하여 core스크립트의 로딩이 완료된 후, 우편번호 서비스를 실행합니다.
+        function maps() {
+            daum.postcode.load(function () {
+
+                new daum.Postcode({
+
+                    oncomplete: function (data) {
+
+                        // 팝업에서 검색결과 항목을 클릭했을때 실행할 코드를 작성하는 부분입니다.
+
+                        // 예제를 참고하여 다양한 활용법을 확인해 보세요.
+
+                    }
+
+                }).open();
+
+            });
         }
-    </script>*@
+        
+
+    </script>
 </head>
 <body>
     <!--Header Include-->
@@ -33,7 +55,7 @@
             <p><span class="formLabel">이름</span><input type="text" class="formInput t2" name="memName" /></p>
             <p><span class="formLabel">이메일</span><input type="email" class="formInput t2" name="memEmail" /></p>
             <p><span class="formLabel">전화번호</span><input type="tel" class="formInput t2" name="memPhone" /></p>
-            <p><span class="formLabel">집주소</span><input type="text" class="formInput t4" name="memAddress" /></p>
+            <p><span class="formLabel">집주소</span><input type="text" class="formInput t4" name="memAddress" /></p><span onclick="maps()">주소 찾기</span>
             <p><span class="formLabel">비밀번호</span><input type="password" class="formInput t2" name="memPassword" /></p>
             <button id="btn_regist" class="btn btn_blue">회원등록</button>
             @*</form>*@
