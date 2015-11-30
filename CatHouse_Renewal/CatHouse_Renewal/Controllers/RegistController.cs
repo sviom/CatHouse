@@ -13,6 +13,7 @@ using Newtonsoft.Json;
 using Microsoft.WindowsAzure.Storage;
 using Microsoft.WindowsAzure.Storage.Blob;
 using System.Threading.Tasks;
+using Microsoft.Azure;
 //using LogLevel = Microsoft.Framework.Logging.LogLevel;
 
 namespace CatHouse_Renewal.Controllers
@@ -278,9 +279,33 @@ namespace CatHouse_Renewal.Controllers
         }
 
         [HttpPost]
-        public void CatPictureRegist()
+        [ActionName("CatPictureRegist")]
+        public async void CatPictureRegist()
         {
+            //ng("<storage-account-name>_AzureStorageConnectionString"));
+            CloudStorageAccount storageAccount = CloudStorageAccount.Parse(CloudConfigurationManager.GetSetting("AzureBlobStorageConnectionString"));
 
+            CloudBlobClient blobClient = storageAccount.CreateCloudBlobClient();
+
+            CloudBlobContainer container = blobClient.GetContainerReference("homeimage");
+            container.CreateIfNotExists();
+
+            //CloudBlockBlob blockblob = container.GetBlockBlobReference("homeimage");
+
+            //using (var filestream = System.IO.File.OpenRead(""))
+            //{
+            //    blockblob.UploadFromStream(filestream);
+            //}
+
+            //https://cathouseimage.blob.core.windows.net/homeimage/pic14.png
+
+            CloudBlockBlob blockBlob = container.GetBlockBlobReference("pic14.png");
+
+            // Save the blob contents to a file named “myfile”.
+            using (var fileStream = System.IO.File.OpenWrite(@"D://"))
+            {
+                await blockBlob.DownloadToStreamAsync(fileStream);
+            }
         }
     }
 }

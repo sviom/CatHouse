@@ -43,7 +43,8 @@
             <p><span class="formLabel">메모</span><input type="text" class="formInput t4" name="catMemo"/></p>
             <p>
                 <span class="formLabel">사진</span>
-                <button id="btn_imgRegist" class="btn btn_small btn_grey" style="display: inline-block;">등록하기</button>
+                <button id="btn_imgRegist" class="btn btn_small btn_grey" style="display: inline-block;" onclick="location.href='@Url.Action("CatPictureRegist","Regist")'">등록하기</button>
+                
                 <img class="preview" />
                 <img class="preview" />
                 <img class="preview" />
@@ -52,6 +53,7 @@
             <button id="btn_regist" class="btn btn_blue">등록하기</button>
         }
         @*<button id="btn_regist" class="btn btn_blue">등록하기</button>*@
+        @Html.ActionLink("CatPictureRegist","CatPictureRegist", "Regist")
     </section>
 
     <!--Footer Include-->
