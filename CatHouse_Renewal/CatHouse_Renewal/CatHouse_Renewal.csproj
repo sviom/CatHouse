@@ -108,6 +108,7 @@
   <ItemGroup>
     <Content Include="Contents\common.css" />
     <Content Include="Contents\common.js" />
+    <Content Include="Contents\DaumAddress.js" />
     <Content Include="Contents\Font\nanumbarungothic\v1\nanumbarungothic.css" />
     <Content Include="Contents\Font\nanumbrushscript\nanumbrushscript.css" />
     <Content Include="Contents\Font\nanumgothiccoding\nanumgothiccoding.css" />
@@ -153,6 +154,7 @@
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\WebApiConfig.cs" />
     <Compile Include="Controllers\AccountController.cs" />
+    <Compile Include="Models\HomeModel.cs" />
     <Compile Include="Other\Check.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\IntroController.cs" />

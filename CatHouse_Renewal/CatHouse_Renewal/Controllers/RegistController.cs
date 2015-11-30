@@ -7,6 +7,7 @@ using CatHouse_Renewal.Controllers;
 using CatHouse_Renewal.DB;
 using CatHouse_Renewal.Models;
 using CatHouse_Renewal.Other;
+using Newtonsoft.Json;
 
 namespace CatHouse_Renewal.Controllers
 {
@@ -102,7 +103,13 @@ namespace CatHouse_Renewal.Controllers
                 string memEmail = Request.Form["memEmail"];
                 string memPassword = Request.Form["memPassword"];
                 int memPhone = Convert.ToInt32(Request.Form["memPhone"]);
-                string memAddress = Request.Form["memAddress"];
+                //string memAddress = Request.Form["memAddress"];
+                // 집 주소 저장 
+                HomeModel homeAddress = new HomeModel();
+                homeAddress.postCode = Request.Form["postCode"].ToString();
+                homeAddress.roadAddress = Request.Form["roadAddress"].ToString();
+                homeAddress.mapAddress = Request.Form["mapAddress"].ToString();
+                string memAddress = JsonConvert.SerializeObject(homeAddress);
 
                 // 이메일/패스워드 길이 검사
                 bool emailCheck = check.CheckEmail(memEmail);
