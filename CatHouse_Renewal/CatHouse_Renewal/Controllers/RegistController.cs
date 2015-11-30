@@ -9,6 +9,12 @@ using CatHouse_Renewal.Models;
 using CatHouse_Renewal.Other;
 using Newtonsoft.Json;
 
+//using Microsoft.Framework.Configuration;
+using Microsoft.WindowsAzure.Storage;
+using Microsoft.WindowsAzure.Storage.Blob;
+using System.Threading.Tasks;
+//using LogLevel = Microsoft.Framework.Logging.LogLevel;
+
 namespace CatHouse_Renewal.Controllers
 {
     public class RegistController : Controller
@@ -106,9 +112,9 @@ namespace CatHouse_Renewal.Controllers
                 //string memAddress = Request.Form["memAddress"];
                 // 집 주소 저장 
                 HomeModel homeAddress = new HomeModel();
-                homeAddress.postCode = Request.Form["postCode"].ToString();
-                homeAddress.roadAddress = Request.Form["roadAddress"].ToString();
-                homeAddress.mapAddress = Request.Form["mapAddress"].ToString();
+                homeAddress.postCode = Request.Form["postCode"].ToString();     // 우편번호
+                homeAddress.roadAddress = Request.Form["roadAddress"].ToString();   // 도로명주소
+                homeAddress.mapAddress = Request.Form["mapAddress"].ToString();     // 지번 주소
                 string memAddress = JsonConvert.SerializeObject(homeAddress);
 
                 // 이메일/패스워드 길이 검사
@@ -269,6 +275,12 @@ namespace CatHouse_Renewal.Controllers
                 ex.Message.ToString();
                 return RedirectToAction("Error", "Home");
             }
+        }
+
+        [HttpPost]
+        public void CatPictureRegist()
+        {
+
         }
     }
 }
