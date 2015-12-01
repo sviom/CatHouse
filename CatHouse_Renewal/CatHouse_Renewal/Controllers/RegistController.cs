@@ -14,6 +14,7 @@ using Microsoft.WindowsAzure.Storage;
 using Microsoft.WindowsAzure.Storage.Blob;
 using System.Threading.Tasks;
 using Microsoft.Azure;
+using System.Configuration;
 //using LogLevel = Microsoft.Framework.Logging.LogLevel;
 
 namespace CatHouse_Renewal.Controllers
@@ -181,6 +182,9 @@ namespace CatHouse_Renewal.Controllers
         {
             try
             {
+                // 고양이 사진 저장
+                CatPictureRegist();
+
                 // 고유아이디/이름/나이/성별/중성화상태/사진/상태메모
                 string catName = Request.Form["catName"];
                 string catAge = Request.Form["catAge"];
@@ -278,34 +282,52 @@ namespace CatHouse_Renewal.Controllers
             }
         }
 
-        [HttpPost]
-        [ActionName("CatPictureRegist")]
+        // 고양이 사진을 Azure Blob Storage에 저장한다.
         public async void CatPictureRegist()
         {
-            //ng("<storage-account-name>_AzureStorageConnectionString"));
-            CloudStorageAccount storageAccount = CloudStorageAccount.Parse(CloudConfigurationManager.GetSetting("AzureBlobStorageConnectionString"));
-
-            CloudBlobClient blobClient = storageAccount.CreateCloudBlobClient();
-
-            CloudBlobContainer container = blobClient.GetContainerReference("homeimage");
-            container.CreateIfNotExists();
-
-            //CloudBlockBlob blockblob = container.GetBlockBlobReference("homeimage");
-
-            //using (var filestream = System.IO.File.OpenRead(""))
-            //{
-            //    blockblob.UploadFromStream(filestream);
-            //}
-
-            //https://cathouseimage.blob.core.windows.net/homeimage/pic14.png
-
-            CloudBlockBlob blockBlob = container.GetBlockBlobReference("pic14.png");
-
-            // Save the blob contents to a file named “myfile”.
-            using (var fileStream = System.IO.File.OpenWrite(@"D://"))
+            try
             {
-                await blockBlob.DownloadToStreamAsync(fileStream);
+                var catImage = Request.Files["btn_imgRegist"];
+                if (catImage == null)
+                {
+                    throw new Exception();
+                    //ViewBag.UploadMessage = "Failed to upload image";
+                }
+                ViewBag.UploadMessage = String.Format("Got image {0} of type {1} and size {2}",
+                    catImage.FileName, catImage.ContentType, catImage.ContentLength);
+                // TODO: actually save the image to Azure blob storage
+
+                var storageAccount = CloudStorageAccount.Parse(ConfigurationManager.ConnectionStrings["AzureBlobStorageConnectionString"].ConnectionString);
             }
+            catch (Exception ex)
+            {
+                ex.Message.ToString();
+            }
+
+            ////ng("<storage-account-name>_AzureStorageConnectionString"));
+            //CloudStorageAccount storageAccount = CloudStorageAccount.Parse(CloudConfigurationManager.GetSetting("AzureBlobStorageConnectionString"));
+
+            //CloudBlobClient blobClient = storageAccount.CreateCloudBlobClient();
+
+            //CloudBlobContainer container = blobClient.GetContainerReference("homeimage");
+            //container.CreateIfNotExists();
+
+            ////CloudBlockBlob blockblob = container.GetBlockBlobReference("homeimage");
+
+            ////using (var filestream = System.IO.File.OpenRead(""))
+            ////{
+            ////    blockblob.UploadFromStream(filestream);
+            ////}
+
+            ////https://cathouseimage.blob.core.windows.net/homeimage/pic14.png
+
+            //CloudBlockBlob blockBlob = container.GetBlockBlobReference("pic14.png");
+
+            //// Save the blob contents to a file named “myfile”.
+            //using (var fileStream = System.IO.File.OpenWrite(@"D://"))
+            //{
+            //    await blockBlob.DownloadToStreamAsync(fileStream);
+            //}
         }
     }
 }
