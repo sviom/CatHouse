@@ -1,5 +1,21 @@
 ﻿<!DOCTYPE html>
-
+@{
+    // 위도와 경도를 DB로 부터 받아서 lng/lnt 항목에 넣어 Daum 지도에서 보이게 한다.
+    double lng = 0;
+    double lnt = 0;
+    // 넘어온 값이 없으면 기본적인 장소는 성공회대학교
+    if (ViewBag.lng == null || ViewBag.lnt == null)
+    {
+        //37.4874741,126.8235651
+        lng = 37.4874741;
+        lnt = 126.8235651;
+    }
+    else
+    {
+        lng = Convert.ToDouble(ViewBag.lng);
+        lnt = Convert.ToDouble(ViewBag.lnt);
+    }
+}
 <html>
 <head>
     <meta name="viewport" content="width=device-width" />
@@ -19,7 +35,7 @@
         function test() {
             var container = document.getElementById('map2'); //지도를 담을 영역의 DOM 레퍼런스
             var options = { //지도를 생성할 때 필요한 기본 옵션
-                center: new daum.maps.LatLng(33.450701, 126.570667), //지도의 중심좌표.
+                center: new daum.maps.LatLng(@lng, @lnt), //지도의 중심좌표.
                 level: 3 //지도의 레벨(확대, 축소 정도)
             };
             var map2 = new daum.maps.Map(container, options); //지도 생성 및 객체 리턴

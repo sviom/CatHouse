@@ -5,18 +5,6 @@
     new daum.Postcode({
         oncomplete: function (data) {
             // 팝업에서 검색결과 항목을 클릭했을때 실행할 코드를 작성하는 부분.
-
-            // 주소로 좌표를 검색
-            geocoder.addr2coord(data.address, function (status, result) {
-                // 정상적으로 검색이 완료됐으면
-                if (status === daum.maps.services.Status.OK) {
-                    // 해당 주소에 대한 좌표를 받아서
-                    //coords = new daum.maps.LatLng(result.addr[0].lat, result.addr[0].lng);
-
-                    coords = result.addr[0].lat + ',' + result.addr[0].lng;
-                }
-            });
-
             // 도로명 주소의 노출 규칙에 따라 주소를 조합한다.
             // 내려오는 변수가 값이 없는 경우엔 공백('')값을 가지므로, 이를 참고하여 분기 한다.
             var fullRoadAddr = data.roadAddress; // 도로명 주소 변수
@@ -46,6 +34,16 @@
             document.getElementById('mapAddress').value = data.jibunAddress;
             document.getElementById('coordinate').value = coords;
 
+            // 주소로 좌표를 검색
+            geocoder.addr2coord(data.address, function (status, result) {
+                // 정상적으로 검색이 완료됐으면
+                if (status === daum.maps.services.Status.OK) {
+                    // 해당 주소에 대한 좌표를 받아서
+                    //coords = new daum.maps.LatLng(result.addr[0].lat, result.addr[0].lng);
+                    coords = result.addr[0].lat + ',' + result.addr[0].lng;
+                }
+            });
+
             // 사용자가 '선택 안함'을 클릭한 경우, 예상 주소라는 표시를 해준다.
             if (data.autoRoadAddress) {
                 //예상되는 도로명 주소에 조합형 주소를 추가한다.
@@ -59,8 +57,6 @@
             } else {
                 document.getElementById('guide').innerHTML = '';
             }
-
-
         }
     }).open();
 }
