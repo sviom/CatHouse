@@ -34,7 +34,6 @@
     <section id="contents">
         @using (Html.BeginForm("MemberCreate", "Regist", FormMethod.Post, htmlAttributes: new { @class = "pt10 pb10 mb20" }))
         {
-            @*<form id="frm" class="pt10 pb10 mb20">*@
             <p><span class="formLabel">이름</span><input type="text" class="formInput t2" name="memName" /></p>
             <p><span class="formLabel">이메일</span><input type="email" class="formInput t2" name="memEmail" /></p>
             <p><span class="formLabel">전화번호</span><input type="tel" class="formInput t2" name="memPhone" /></p>
@@ -49,9 +48,7 @@
 
             <p><span class="formLabel">비밀번호</span><input type="password" class="formInput t2" name="memPassword" /></p>
             <button id="btn_regist" class="btn btn_blue">회원등록</button>
-            @*</form>*@
         }
-        @*<button id="btn_regist" class="btn btn_blue" onclick="location.href='@Url.Action("MemberCreate", "Regist")'">회원등록</button>*@
     </section>
 
     <!--Footer Include-->
