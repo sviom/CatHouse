@@ -1,16 +1,21 @@
-﻿//<input type="text" id="sample2_postcode" placeholder="우편번호">
-//<input type="button" onclick="sample2_execDaumPostcode()" value="우편번호 찾기"><br>
-//<input type="text" id="sample2_address" placeholder="한글주소">
-//<input type="text" id="sample2_addressEnglish" placeholder="영문주소">
-
-//<div id="layer" style="display:none;position:fixed;overflow:hidden;z-index:1;-webkit-overflow-scrolling:touch;">
-//<img src="//i1.daumcdn.net/localimg/localimages/07/postcode/320/close.png" id="btnCloseLayer" style="cursor:pointer;position:absolute;right:-3px;top:-3px;z-index:1" onclick="closeDaumPostcode()" alt="닫기 버튼">
-//</div>
-
-function getAddressFromDaum() {
+﻿function getAddressFromDaum() {
+    //주소-좌표 변환 객체를 생성
+    var geocoder = new daum.maps.services.Geocoder();
+    var coords = 'test';
     new daum.Postcode({
         oncomplete: function (data) {
             // 팝업에서 검색결과 항목을 클릭했을때 실행할 코드를 작성하는 부분.
+
+            // 주소로 좌표를 검색
+            geocoder.addr2coord(data.address, function (status, result) {
+                // 정상적으로 검색이 완료됐으면
+                if (status === daum.maps.services.Status.OK) {
+                    // 해당 주소에 대한 좌표를 받아서
+                    //coords = new daum.maps.LatLng(result.addr[0].lat, result.addr[0].lng);
+
+                    coords = result.addr[0].lat + ',' + result.addr[0].lng;
+                }
+            });
 
             // 도로명 주소의 노출 규칙에 따라 주소를 조합한다.
             // 내려오는 변수가 값이 없는 경우엔 공백('')값을 가지므로, 이를 참고하여 분기 한다.
@@ -39,6 +44,7 @@ function getAddressFromDaum() {
             document.getElementById('postCode').value = data.zonecode; //5자리 새우편번호 사용
             document.getElementById('roadAddress').value = fullRoadAddr;
             document.getElementById('mapAddress').value = data.jibunAddress;
+            document.getElementById('coordinate').value = coords;
 
             // 사용자가 '선택 안함'을 클릭한 경우, 예상 주소라는 표시를 해준다.
             if (data.autoRoadAddress) {
@@ -53,6 +59,12 @@ function getAddressFromDaum() {
             } else {
                 document.getElementById('guide').innerHTML = '';
             }
+
+
         }
     }).open();
+}
+
+function saveCoordinate() {
+
 }

@@ -12,11 +12,9 @@
     <link rel="stylesheet" type="text/css" href="~/Contents/registSub.css" />
 
     <script src="~/Contents/common.js"></script>
-
-    <script src="http://dmaps.daum.net/map_js_init/postcode.v2.js"></script>
     <script src="~/Contents/DaumAddress.js"></script>
-    <script src="//apis.daum.net/maps/maps3.js?apikey=b5192e1790c15977e7899894dccac0d7&libraries=services"></script>
-
+    <script src='http://dmaps.daum.net/map_js_init/postcode.v2.js'></script>
+    <script src='//apis.daum.net/maps/maps3.js?apikey=b5192e1790c15977e7899894dccac0d7&libraries=services'></script>
     <script>
         // Daum 우편 번호 및 주소 검색 서비스 실행
         function maps() {
@@ -44,6 +42,7 @@
             <input type="button" onclick="maps()" value="우편번호 찾기"><br>
             <input type="text" name="roadAddress" id="roadAddress" placeholder="도로명주소">
             <input type="text" name="mapAddress" id="mapAddress" placeholder="지번주소">
+            <input type="text" name="coordinate" id="coordinate" hidden="hidden"/>
             <!--예제 끝-->
 
             <p><span class="formLabel">비밀번호</span><input type="password" class="formInput t2" name="memPassword" /></p>

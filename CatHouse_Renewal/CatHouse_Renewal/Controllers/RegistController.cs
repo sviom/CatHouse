@@ -117,6 +117,8 @@ namespace CatHouse_Renewal.Controllers
                 homeAddress.postCode = Request.Form["postCode"].ToString();     // 우편번호
                 homeAddress.roadAddress = Request.Form["roadAddress"].ToString();   // 도로명주소
                 homeAddress.mapAddress = Request.Form["mapAddress"].ToString();     // 지번 주소
+                homeAddress.coordinate = Request.Form["coordinate"].ToString();
+                //coordinate
                 string memAddress = JsonConvert.SerializeObject(homeAddress);
 
                 // 이메일/패스워드 길이 검사

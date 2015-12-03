@@ -10,5 +10,6 @@ namespace CatHouse_Renewal.Models
         public string postCode { get; set; }
         public string roadAddress { get; set; }
         public string mapAddress { get; set; }
+        public string coordinate { get; set; }      //좌표
     }
 }
