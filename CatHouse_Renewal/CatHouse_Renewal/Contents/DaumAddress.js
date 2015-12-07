@@ -64,10 +64,10 @@
 
 
 // 좌표를 주소로 변환
-function changeCoordinateToAddress() {
+function changeCoordinateToAddress(lng,lnt) {
     var mapContainer = document.getElementById('map2'), // 지도를 표시할 div 
     mapOption = {
-        center: new daum.maps.LatLng(37.566826, 126.9786567), // 지도의 중심좌표
+        center: new daum.maps.LatLng(lng, lnt), // 지도의 중심좌표
         level: 1 // 지도의 확대 레벨
     };
 
