@@ -61,33 +61,11 @@
     }).open();
 }
 
-// 지도 초기 세팅
-function setMap(lng,lnt) {
-    var container = document.getElementById('map2'); //지도를 담을 영역의 DOM 레퍼런스
-    var options = { //지도를 생성할 때 필요한 기본 옵션
-        center: new daum.maps.LatLng(@lng, @lnt), //지도의 중심좌표.
-        level: 3 //지도의 레벨(확대, 축소 정도)
-    };
-    var map2 = new daum.maps.Map(container, options); //지도 생성 및 객체 리턴
 
-    // 마커가 표시될 위치입니다
-    var markerPosition  = new daum.maps.LatLng(lng, lnt);
-
-    // 마커를 생성합니다
-    var marker = new daum.maps.Marker({
-        position: markerPosition
-    });
-
-    // 마커가 지도 위에 표시되도록 설정합니다
-    marker.setMap(map2);
-
-    // 아래 코드는 지도 위의 마커를 제거하는 코드입니다
-    // marker.setMap(null);
-}
 
 // 좌표를 주소로 변환
 function changeCoordinateToAddress() {
-    var mapContainer = document.getElementById('map'), // 지도를 표시할 div 
+    var mapContainer = document.getElementById('map2'), // 지도를 표시할 div 
     mapOption = {
         center: new daum.maps.LatLng(37.566826, 126.9786567), // 지도의 중심좌표
         level: 1 // 지도의 확대 레벨

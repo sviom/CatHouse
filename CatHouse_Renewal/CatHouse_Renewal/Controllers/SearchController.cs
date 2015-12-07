@@ -50,13 +50,17 @@ namespace CatHouse_Renewal.Controllers
             }
         }
 
+
         public ActionResult FilterFinder()
         {
             return View();
         }
 
+
+        [HttpPost]
+        [ActionName("NearTraderFinder")]
         // 지도 찾기에서 해당 회원 근처 5곳의 장소를 얻어와 지도에 마커로 표시한다.
-        public void NearFind()
+        public void NearTraderFinder()
         {
             try
             {
