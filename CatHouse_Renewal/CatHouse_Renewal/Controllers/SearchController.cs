@@ -54,5 +54,28 @@ namespace CatHouse_Renewal.Controllers
         {
             return View();
         }
+
+        // 지도 찾기에서 해당 회원 근처 5곳의 장소를 얻어와 지도에 마커로 표시한다.
+        public void NearFind()
+        {
+            try
+            {
+                // 해당 회원의 좌표를 얻어온다.
+                // DB로 부터 MemID를 넘겨 해당 회원의 좌표값을 알아온다.
+                HomeModel memAddress = selectDB.MemberCoordinateSelect(Convert.ToInt32(Session["MemberID"]));
+
+                // 해당 좌표를 주소로 변환해 주소 값을 얻어온다.
+
+                // 주소 값으로 지도에서 검색한다.
+
+                // 검색한 키워드의 근처 5곳의 좌표를 얻어온다.
+
+                // 좌표값을 배열로 만들어 View로 넘긴다.
+            }
+            catch(Exception ex)
+            {
+
+            }
+        }
     }
 }
