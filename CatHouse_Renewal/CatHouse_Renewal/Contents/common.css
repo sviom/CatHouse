@@ -236,6 +236,12 @@ header > section > img {
 #contents { margin: auto; max-width: 960px; text-align: center; }
 
 
+/*** SELECT WHAT TO DO (TYPE OF REGIST, SEARCH) ***/
+#contents #box_registGeneral, #contents #box_searchMap { border-right: 1px solid #DEDEDE; }
+@media all and (max-width: 959px) {
+    #contents #box_searchMap { border-right: none; }
+}
+
 /*** FOOTER ***/
 footer {
     margin: auto;

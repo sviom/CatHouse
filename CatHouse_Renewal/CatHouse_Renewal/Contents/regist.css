@@ -56,14 +56,12 @@ div.box2 { width: 420px; }
     display: inline-block;
     line-height: 50px;
 }
-#contents #box_registGeneral { border-right: 1px solid #DEDEDE; }
 
 @media all and (max-width: 959px) {
     #contents .innerBox1, #contents .innerBox2 {
         width: 90%;
         display: block;
     }
-    #contents #box_registGeneral { border-right: none; }
 }
 
 #contents .innerBox1 .innerTitle {
