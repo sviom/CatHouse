@@ -65,36 +65,39 @@
 
     <section id="contents">
         <span class="formTitle">장소검색</span>
-        <form class="pt20 pb10 mb20">
-            @*<iframe src="https://www.google.com/maps/embed?pb=!1m14!1m12!1m3!1d25326.033177667854!2d127.13656985!3d37.49012765!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!5e0!3m2!1sko!2skr!4v1445674339746" frameborder="0" id="map" allowfullscreen></iframe>*@
-            <iframe onload="setMap(@lng,@lnt)" frameborder="0" id="map" allowfullscreen></iframe>
-            <div id="map2" style="width:500px;height:400px;"></div>
-            <div>
-                <span class="resultTitle">홍대입구</span>
-                <span class="resultAddr">서울특별시 마포구 서교동 1234</span>
-                <span class="resultPhone"><a href="tel:010-1234-1234">010-1234-1234</a></span>
-                <img class="resultImage" /><img class="resultImage" />
-            </div>
-            <div>
-                <span class="resultTitle">홍대입구</span>
-                <span class="resultAddr">서울특별시 마포구 서교동 1234</span>
-                <span class="resultPhone"><a href="tel:010-1234-1234">010-1234-1234</a></span>
-                <img class="resultImage" /><img class="resultImage" />
-            </div>
-            <div>
-                <span class="resultTitle">홍대입구</span>
-                <span class="resultAddr">서울특별시 마포구 서교동 1234</span>
-                <span class="resultPhone"><a href="tel:010-1234-1234">010-1234-1234</a></span>
-                <img class="resultImage" /><img class="resultImage" />
-            </div>
-            <div>
-                <span class="resultTitle">홍대입구</span>
-                <span class="resultAddr">서울특별시 마포구 서교동 1234</span>
-                <span class="resultPhone"><a href="tel:010-1234-1234">010-1234-1234</a></span>
-                <img class="resultImage" /><img class="resultImage" />
-            </div>
-            <button id="btn_search" class="btn btn_blue" onclick="changeCoordinateToAddress(@lng,@lnt)">검색</button>
-        </form>
+        @using (Html.BeginForm("MemberCreate", "Regist", FormMethod.Post, htmlAttributes: new { @class = "pt20 pb10 mb20" }))
+        {
+            <form class="pt20 pb10 mb20">
+                @*<iframe src="https://www.google.com/maps/embed?pb=!1m14!1m12!1m3!1d25326.033177667854!2d127.13656985!3d37.49012765!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!5e0!3m2!1sko!2skr!4v1445674339746" frameborder="0" id="map" allowfullscreen></iframe>*@
+                <iframe onload="setMap(@lng,@lnt)" frameborder="0" id="map" allowfullscreen></iframe>
+                <div id="map2" style="width:500px;height:400px;"></div>
+                <div>
+                    <span class="resultTitle">홍대입구</span>
+                    <span class="resultAddr">서울특별시 마포구 서교동 1234</span>
+                    <span class="resultPhone"><a href="tel:010-1234-1234">010-1234-1234</a></span>
+                    <img class="resultImage" /><img class="resultImage" />
+                </div>
+                <div>
+                    <span class="resultTitle">홍대입구</span>
+                    <span class="resultAddr">서울특별시 마포구 서교동 1234</span>
+                    <span class="resultPhone"><a href="tel:010-1234-1234">010-1234-1234</a></span>
+                    <img class="resultImage" /><img class="resultImage" />
+                </div>
+                <div>
+                    <span class="resultTitle">홍대입구</span>
+                    <span class="resultAddr">서울특별시 마포구 서교동 1234</span>
+                    <span class="resultPhone"><a href="tel:010-1234-1234">010-1234-1234</a></span>
+                    <img class="resultImage" /><img class="resultImage" />
+                </div>
+                <div>
+                    <span class="resultTitle">홍대입구</span>
+                    <span class="resultAddr">서울특별시 마포구 서교동 1234</span>
+                    <span class="resultPhone"><a href="tel:010-1234-1234">010-1234-1234</a></span>
+                    <img class="resultImage" /><img class="resultImage" />
+                </div>
+                <button id="btn_search" class="btn btn_blue" onclick="changeCoordinateToAddress(@lng,@lnt)">검색</button>
+            </form>
+        }
     </section>
     <!--footer Include-->
     @{Html.RenderPartial("footer");}
