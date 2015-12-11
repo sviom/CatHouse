@@ -20,9 +20,11 @@
 
     <section id="contents">
         <span class="formTitle">장소검색</span>
-        <form class="pt20 pb10 mb20">
+        @using (Html.BeginForm("FindTraderWithFilter", "Search", FormMethod.Post, htmlAttributes: new { @class = "pt20 pb10 mb20" }))
+        {
+            @*<form class="pt20 pb10 mb20">*@
             <div>
-                <select name="city" class="big">
+                <select id="cityName" name="city" class="big">
                     <option>시/도</option>
                     <option>서울특별시</option>
                     <option>부산광역시</option>
@@ -42,7 +44,7 @@
                     <option>전라남도</option>
                     <option>제주도</option>
                 </select>
-                <select name="addr1" class="big">
+                <select id="addr1Name" name="addr1" class="big">
                     <option>시/군/구</option>
                     <option>강남구</option>
                     <option>강동구</option>
@@ -70,7 +72,7 @@
                     <option>중구</option>
                     <option>중랑구</option>
                 </select>
-                <select name="addr2" class="big">
+                <select id="addr2Name" name="addr2" class="big">
                     <option>동/읍/리</option>
                     <option>가락1동</option>
                     <option>가락2동</option>
@@ -111,20 +113,23 @@
                 </select>
             </div>
             <div>
-                <select name="existingYN" class="big">
+                <select id="existPet" name="existingYN" class="big">
                     <option>기존동물여부</option>
                     <option>있음</option>
                     <option>없음</option>
                 </select>
-                <select name="amount" class="small">
+                <select id="petCount" name="amount" class="small">
                     <option>0마리</option>
                     <option>1마리</option>
                     <option>2마리</option>
                     <option>3마리 이상</option>
                 </select>
             </div>
-        </form>
-        <button id="btn_search" class="btn btn_blue">검색</button>
+            <button id="btn_search" class="btn btn_blue">검색</button>
+                @*</form>*@
+        }
+
+
     </section>
 
     <!--footer Include-->

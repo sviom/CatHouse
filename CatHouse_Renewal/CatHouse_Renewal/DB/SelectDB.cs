@@ -61,5 +61,19 @@ namespace CatHouse_Renewal.DB
                 return null;
             }
         }
+
+        // 필터로 업자의 정보 가져오기
+        public TraderModel TraderSelectWithFilter()
+        {
+            try
+            {
+                return null;
+            }
+            catch(Exception ex)
+            {
+                ex.Message.ToString();
+                return null;
+            }
+        }
     }
 }

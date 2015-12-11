@@ -56,5 +56,23 @@ namespace CatHouse_Renewal.Controllers
             return View();
         }
 
+        // 필터 FindSelect
+        /// <summary>
+        /// 필터로 DB에서 조건에 맞는 사람을 찾는다.
+        /// </summary>
+        [HttpPost]
+        [ActionName("FindTraderWithFilter")]
+        public void FindTraderWithFilter(FormCollection filterFormData)
+        {
+            try
+            {
+                // DB에 조건들을 넘겨서 해당 조건에 맞는 업자를 찾아온다.
+                
+            }
+            catch(Exception ex)
+            {
+                ex.Message.ToString();
+            }
+        }
     }
 }
