@@ -11,6 +11,69 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" />
     <link rel="stylesheet" type="text/css" href="~/Contents/common.css" />
     <link rel="stylesheet" type="text/css" href="~/Contents/search_filter.css" />
+
+    <script src="http://dmaps.daum.net/map_js_init/postcode.v2.js"></script>
+    <script>
+        // 우편번호 찾기 찾기 화면을 넣을 element
+        //var element_wrap = document.getElementById('searchPage');
+
+        function foldDaumPostcode() {
+            // iframe을 넣은 element를 안보이게 한다.
+            element_wrap.style.display = 'none';
+        }
+
+        function searchFilter() {
+            // 우편번호 찾기 찾기 화면을 넣을 element
+            var element_wrap = document.getElementById('searchPage');
+            // 현재 scroll 위치를 저장해놓는다.
+            var currentScroll = Math.max(document.body.scrollTop, document.documentElement.scrollTop);
+            new daum.Postcode({
+                oncomplete: function (data) {
+                    // 검색결과 항목을 클릭했을때 실행할 코드를 작성하는 부분.
+
+                    // 각 주소의 노출 규칙에 따라 주소를 조합한다.
+                    // 내려오는 변수가 값이 없는 경우엔 공백('')값을 가지므로, 이를 참고하여 분기 한다.
+                    var fullAddr = data.address; // 최종 주소 변수
+                    var extraAddr = ''; // 조합형 주소 변수
+
+                    // 기본 주소가 도로명 타입일때 조합한다.
+                    if (data.addressType === 'R') {
+                        //법정동명이 있을 경우 추가한다.
+                        if (data.bname !== '') {
+                            extraAddr += data.bname;
+                        }
+                        // 건물명이 있을 경우 추가한다.
+                        if (data.buildingName !== '') {
+                            extraAddr += (extraAddr !== '' ? ', ' + data.buildingName : data.buildingName);
+                        }
+                        // 조합형주소의 유무에 따라 양쪽에 괄호를 추가하여 최종 주소를 만든다.
+                        fullAddr += (extraAddr !== '' ? ' (' + extraAddr + ')' : '');
+                    }
+
+                    // 우편번호와 주소 정보를 해당 필드에 넣는다.
+                    document.getElementById('searchPostCode').value = data.zonecode; //5자리 새우편번호 사용
+                    document.getElementById('searchFilterAddress').value = fullAddr;
+
+                    // iframe을 넣은 element를 안보이게 한다.
+                    // (autoClose:false 기능을 이용한다면, 아래 코드를 제거해야 화면에서 사라지지 않는다.)
+                    element_wrap.style.display = 'none';
+
+                    // 우편번호 찾기 화면이 보이기 이전으로 scroll 위치를 되돌린다.
+                    document.body.scrollTop = currentScroll;
+                },
+                // 우편번호 찾기 화면 크기가 조정되었을때 실행할 코드를 작성하는 부분. iframe을 넣은 element의 높이값을 조정한다.
+                onresize: function (size) {
+                    element_wrap.style.height = size.height + 'px';
+                },
+                width: '100%',
+                height: '100%'
+            }).embed(element_wrap);
+
+            // iframe을 넣은 element를 보이게 한다.
+            element_wrap.style.display = 'block';
+        }
+    </script>
+
 </head>
 <body>
     <!--Header Include-->
@@ -23,110 +86,20 @@
         @using (Html.BeginForm("FindTraderWithFilter", "Search", FormMethod.Post, htmlAttributes: new { @class = "pt20 pb10 mb20" }))
         {
             @*<form class="pt20 pb10 mb20">*@
-            <div>
-                <select id="cityName" name="city" class="big">
-                    <option>시/도</option>
-                    <option>서울특별시</option>
-                    <option>부산광역시</option>
-                    <option>인천광역시</option>
-                    <option>대구광역시</option>
-                    <option>광주광역시</option>
-                    <option>대전광역시</option>
-                    <option>울산광역시</option>
-                    <option>세종특별자치시</option>
-                    <option>경기도</option>
-                    <option>강원도</option>
-                    <option>충청남도</option>
-                    <option>충청북도</option>
-                    <option>경상북도</option>
-                    <option>경상남도</option>
-                    <option>전라북도</option>
-                    <option>전라남도</option>
-                    <option>제주도</option>
-                </select>
-                <select id="addr1Name" name="addr1" class="big">
-                    <option>시/군/구</option>
-                    <option>강남구</option>
-                    <option>강동구</option>
-                    <option>강북구</option>
-                    <option>강서구</option>
-                    <option>관악구</option>
-                    <option>광진구</option>
-                    <option>구로구</option>
-                    <option>금천구</option>
-                    <option>노원구</option>
-                    <option>도봉구</option>
-                    <option>동대문구</option>
-                    <option>동작구</option>
-                    <option>마포구</option>
-                    <option>서대문구</option>
-                    <option>서초구</option>
-                    <option>성동구</option>
-                    <option>성북구</option>
-                    <option>송파구</option>
-                    <option>양천구</option>
-                    <option>영등포구</option>
-                    <option>용산구</option>
-                    <option>은평구</option>
-                    <option>종로구</option>
-                    <option>중구</option>
-                    <option>중랑구</option>
-                </select>
-                <select id="addr2Name" name="addr2" class="big">
-                    <option>동/읍/리</option>
-                    <option>가락1동</option>
-                    <option>가락2동</option>
-                    <option>가락동</option>
-                    <option>가락본동</option>
-                    <option>거여1동</option>
-                    <option>거여2동</option>
-                    <option>거여동</option>
-                    <option>마천1동</option>
-                    <option>마천2동</option>
-                    <option>마천동</option>
-                    <option>문정1동</option>
-                    <option>문정2동</option>
-                    <option>문정동</option>
-                    <option>방이1동</option>
-                    <option>방이2동</option>
-                    <option>방이동</option>
-                    <option>삼전동</option>
-                    <option>석촌동</option>
-                    <option>송파1동</option>
-                    <option>송파2동</option>
-                    <option>송파동</option>
-                    <option>신천동</option>
-                    <option>오금동</option>
-                    <option>오륜동</option>
-                    <option>위례동</option>
-                    <option>잠실2동</option>
-                    <option>잠실3동</option>
-                    <option>잠실4동</option>
-                    <option>잠실6동</option>
-                    <option>잠실7동</option>
-                    <option>잠실동</option>
-                    <option>잠실본동</option>
-                    <option>장지동</option>
-                    <option>풍납1동</option>
-                    <option>풍납2동</option>
-                    <option>풍납동</option>
-                </select>
-            </div>
-            <div>
-                <select id="existPet" name="existingYN" class="big">
-                    <option>기존동물여부</option>
-                    <option>있음</option>
-                    <option>없음</option>
-                </select>
-                <select id="petCount" name="amount" class="small">
-                    <option>0마리</option>
-                    <option>1마리</option>
-                    <option>2마리</option>
-                    <option>3마리 이상</option>
-                </select>
-            </div>
-            <button id="btn_search" class="btn btn_blue">검색</button>
-                @*</form>*@
+            @*<input type="text" id="sample3_postcode" placeholder="우편번호"> -
+            < input type = "button" onclick = "sample3_execDaumPostcode()" value = "우편번호 찾기" >< br >
+
+                 < div id = "wrap" style = "display:none;border:1px solid;width:500px;height:300px;margin:5px 0;position:relative" >
+                    < img src = "//i1.daumcdn.net/localimg/localimages/07/postcode/320/close.png" id = "btnFoldWrap" style = "cursor:pointer;position:absolute;right:0px;top:-1px;z-index:1" onclick = "foldDaumPostcode()" alt = "접기 버튼" >
+                             </ div >
+                             < input type = "text" id = "sample3_address" class="d_form large" placeholder="주소">*@
+            <input type="text" id="searchPostCode" placeholder="우편번호"/>
+            <input type="button" id="searchFilterPage" onclick="searchFilter()" value="우편 번호" /><br />
+            <div id="searchPage" style="display:none;border:1px solid;width:500px;height:300px;margin:5px 0;position:relative"></div>
+            <input type="text" id="searchFilterAddress" placeholder="원하시는 주소를 입력하세요." />
+            
+            
+            @*</form>*@
         }
 
 

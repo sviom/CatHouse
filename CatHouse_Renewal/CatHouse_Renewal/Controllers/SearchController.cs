@@ -66,8 +66,17 @@ namespace CatHouse_Renewal.Controllers
         {
             try
             {
+                // 시/도 이름에 따라 군/구에 해당하는 이름 출력
+                // 군/구에 따라 동/읍/리 이름 출력
                 // DB에 조건들을 넘겨서 해당 조건에 맞는 업자를 찾아온다.
-                
+                string cityName = Request.Form["city"];
+                switch (cityName)
+                {
+                    case "서울특별시":
+                        break;
+                    default:
+                        break;
+                }
             }
             catch(Exception ex)
             {

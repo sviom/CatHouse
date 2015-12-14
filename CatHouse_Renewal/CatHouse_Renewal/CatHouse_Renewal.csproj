@@ -176,6 +176,7 @@
     <Content Include="Contents\search_filter.css" />
     <Content Include="Contents\search_map.css" />
     <Content Include="Contents\search_result.css" />
+    <Content Include="Controllers\Temp.txt" />
     <Content Include="Global.asax" />
     <Content Include="Web.config" />
   </ItemGroup>
@@ -184,6 +185,7 @@
     <Compile Include="App_Start\WebApiConfig.cs" />
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Models\HomeModel.cs" />
+    <Compile Include="Models\RegionModel.cs" />
     <Compile Include="Other\Check.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\IntroController.cs" />
