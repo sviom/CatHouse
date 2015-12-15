@@ -86,23 +86,17 @@
         @using (Html.BeginForm("FindTraderWithFilter", "Search", FormMethod.Post, htmlAttributes: new { @class = "pt20 pb10 mb20" }))
         {
             @*<form class="pt20 pb10 mb20">*@
-            @*<input type="text" id="sample3_postcode" placeholder="우편번호"> -
-            < input type = "button" onclick = "sample3_execDaumPostcode()" value = "우편번호 찾기" >< br >
-
-                 < div id = "wrap" style = "display:none;border:1px solid;width:500px;height:300px;margin:5px 0;position:relative" >
-                    < img src = "//i1.daumcdn.net/localimg/localimages/07/postcode/320/close.png" id = "btnFoldWrap" style = "cursor:pointer;position:absolute;right:0px;top:-1px;z-index:1" onclick = "foldDaumPostcode()" alt = "접기 버튼" >
-                             </ div >
-                             < input type = "text" id = "sample3_address" class="d_form large" placeholder="주소">*@
-            <input type="text" id="searchPostCode" placeholder="우편번호"/>
+            <input type="text" id="searchPostCode" placeholder="우편번호" />
+            <input type="text" id="searchCity" placeholder="시" />
+            <input type="text" id="searchCounty" placeholder="군" />
+            <input type="text" id="searchTown" placeholder="구" />
             <input type="button" id="searchFilterPage" onclick="searchFilter()" value="우편 번호" /><br />
             <div id="searchPage" style="display:none;border:1px solid;width:500px;height:300px;margin:5px 0;position:relative"></div>
             <input type="text" id="searchFilterAddress" placeholder="원하시는 주소를 입력하세요." />
-            
+
             
             @*</form>*@
         }
-
-
     </section>
 
     <!--footer Include-->

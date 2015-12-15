@@ -176,7 +176,7 @@
     <Content Include="Contents\search_filter.css" />
     <Content Include="Contents\search_map.css" />
     <Content Include="Contents\search_result.css" />
-    <Content Include="Controllers\Temp.txt" />
+    <Content Include="Other\Temp.txt" />
     <Content Include="Global.asax" />
     <Content Include="Web.config" />
   </ItemGroup>
