@@ -265,6 +265,7 @@
     <Content Include="Views\Account\MemberInfo.cshtml" />
     <Content Include="Views\Home\CommonError.cshtml" />
     <Content Include="Views\Account\PasswordChange.cshtml" />
+    <Content Include="Views\Search\FilterSearchResult.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

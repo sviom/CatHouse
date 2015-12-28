@@ -14,7 +14,7 @@ namespace CatHouse_Renewal.Models
         // 집 가격
         public int homePrice { get; set; }
 
-        // 기존 반려동물 소개
+        // 기존 반려동물 소개(숫자)
         public string existPetIntro { get; set; }
 
         // 기존 반려동물 존재 여부

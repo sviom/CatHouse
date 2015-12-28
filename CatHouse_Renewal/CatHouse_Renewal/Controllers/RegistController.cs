@@ -252,12 +252,25 @@ namespace CatHouse_Renewal.Controllers
                 string homeGoods = Request.Form["homeGoods"];
                 string existPet = Request.Form["existPet"];
 
+
                 // 새로운 멤버 객체 생성
                 TraderModel newTraderMem = new TraderModel();
                 newTraderMem.homePrice = homePrice;
                 newTraderMem.homeIntro = homeIntro;
-                newTraderMem.existPet = true;
-                newTraderMem.existPetIntro = "기존에 있는 동물 소개";
+                
+                // 기존 동물 여부 판단
+                if (existPet.Equals("yes"))
+                {
+                    // 수컷이면
+                    newTraderMem.existPet = true;
+                }
+                else
+                {
+                    // 암컷이면
+                    newTraderMem.existPet = false;
+                }
+
+                newTraderMem.existPetIntro = Request.Form["existPetNumber"].ToString();
                 newTraderMem.homeAddress = "구로구항동";
                 newTraderMem.homePhotoURL = "어딘가에 있을사진";
                 // FK로 연동되는 MemberID

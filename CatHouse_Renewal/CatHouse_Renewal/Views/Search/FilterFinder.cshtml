@@ -13,6 +13,8 @@
     <link rel="stylesheet" type="text/css" href="~/Contents/search_filter.css" />
 
     <script src="http://dmaps.daum.net/map_js_init/postcode.v2.js"></script>
+
+    @*다음 지도 검색 관련 스트립트*@
     <script>
         // 우편번호 찾기 찾기 화면을 넣을 element
         //var element_wrap = document.getElementById('searchPage');
@@ -86,15 +88,28 @@
         @using (Html.BeginForm("FindTraderWithFilter", "Search", FormMethod.Post, htmlAttributes: new { @class = "pt20 pb10 mb20" }))
         {
             @*<form class="pt20 pb10 mb20">*@
-            <input type="text" id="searchPostCode" placeholder="우편번호" />
+            @*<input type="text" id="searchPostCode" placeholder="우편번호" />
             <input type="text" id="searchCity" placeholder="시" />
             <input type="text" id="searchCounty" placeholder="군" />
             <input type="text" id="searchTown" placeholder="구" />
             <input type="button" id="searchFilterPage" onclick="searchFilter()" value="우편 번호" /><br />
             <div id="searchPage" style="display:none;border:1px solid;width:500px;height:300px;margin:5px 0;position:relative"></div>
-            <input type="text" id="searchFilterAddress" placeholder="원하시는 주소를 입력하세요." />
+            <input type="text" id="searchFilterAddress" placeholder="원하시는 주소를 입력하세요." />*@
 
-            
+            <div>
+                <select id="existingYN" name="existingYN" class="big">
+                    <option value="already">기존동물여부</option>
+                    <option value="1">있음</option>
+                    <option value="0">없음</option>
+                </select>
+                <select id="amount" name="amount" class="small">
+                    <option value="0">0마리</option>
+                    <option value="1">1마리</option>
+                    <option value="2">2마리</option>
+                    <option value="3">3마리 이상</option>
+                </select>
+            </div>
+            <button id="btn_search" class="btn btn_blue">검색</button>
             @*</form>*@
         }
     </section>

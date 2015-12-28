@@ -20,7 +20,20 @@ namespace CatHouse_Renewal.Controllers
         // 점검 관련 함수들 모음
         Check check = new Check();
 
+        // 찾기 기본화면으로 이동
         public ActionResult MainFinder()
+        {
+            return View();
+        }
+
+        // 조건 검색 화면으로 이동
+        public ActionResult FilterFinder()
+        {
+            return View();
+        }
+
+        // 조건 검색 결과 화면으로 이동
+        public ActionResult FilterSearchResult()
         {
             return View();
         }
@@ -40,7 +53,7 @@ namespace CatHouse_Renewal.Controllers
                 // View로 넘긴다.
                 return View();
             }
-            catch(Exception ex)
+            catch (Exception ex)
             {
                 ex.Message.ToString();
                 // 값이 없거나 에러이면 Null을 넘긴다.
@@ -51,36 +64,35 @@ namespace CatHouse_Renewal.Controllers
         }
 
 
-        public ActionResult FilterFinder()
-        {
-            return View();
-        }
-
         // 필터 FindSelect
         /// <summary>
         /// 필터로 DB에서 조건에 맞는 사람을 찾는다.
         /// </summary>
         [HttpPost]
         [ActionName("FindTraderWithFilter")]
-        public void FindTraderWithFilter(FormCollection filterFormData)
+        public ActionResult FindTraderWithFilter(FormCollection filterFormData)
         {
             try
             {
-                // 시/도 이름에 따라 군/구에 해당하는 이름 출력
-                // 군/구에 따라 동/읍/리 이름 출력
-                // DB에 조건들을 넘겨서 해당 조건에 맞는 업자를 찾아온다.
-                string cityName = Request.Form["city"];
-                switch (cityName)
-                {
-                    case "서울특별시":
-                        break;
-                    default:
-                        break;
-                }
+                // 여러가지 조건이 있지만 일단 기존 동물 여부와 마릿수에 대한 것만 검색해서 넘겨준다.
+                string existPet = Request.Form["existingYN"].ToString();
+                int amount = Convert.ToInt32(Request.Form["amount"]);
+
+                // 기존 동물 여부와 마릿수를 디비에 보내서 가져온다.
+                List<TraderModel> traderlist = selectDB.TraderSelectWithFilter(existPet, amount);
+
+                // 다른 화면으로 전송하기 위한 임시 데이터
+                //TempData["student"] = new Student();
+                //return RedirectToAction("GetStudent", "Student");
+                TempData["trader"] = new List<TraderModel>();
+
+                // 리스트를 검색 결과 화면으로 전송한다.
+                return RedirectToAction("FilterSearchResult", "Search");                
             }
-            catch(Exception ex)
+            catch (Exception ex)
             {
                 ex.Message.ToString();
+                return null;
             }
         }
     }
