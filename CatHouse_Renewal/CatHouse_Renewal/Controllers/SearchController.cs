@@ -32,10 +32,23 @@ namespace CatHouse_Renewal.Controllers
             return View();
         }
 
+
         // 조건 검색 결과 화면으로 이동
-        public ActionResult FilterSearchResult()
+        [HttpPost,ActionName("FilterSearchResult")]
+        public ActionResult FilterSearchResult(string existPet, int petNum)
         {
-            return View();
+            try
+            {
+                // 기존 동물 여부와 마릿수를 디비에 보내서 가져온다.
+                List<TraderModel> traderlist = selectDB.TraderSelectWithFilter(existPet, petNum);
+                return View();
+            }
+            catch(Exception ex)
+            {
+                ex.Message.ToString();
+                return View();
+            }
+
         }
 
         // 지도 찾기로 이동
@@ -63,14 +76,12 @@ namespace CatHouse_Renewal.Controllers
             }
         }
 
-
-        // 필터 FindSelect
         /// <summary>
         /// 필터로 DB에서 조건에 맞는 사람을 찾는다.
         /// </summary>
         [HttpPost]
         [ActionName("FindTraderWithFilter")]
-        public ActionResult FindTraderWithFilter(FormCollection filterFormData)
+        public ActionResult FindTraderWithFilter()
         {
             try
             {
@@ -78,16 +89,9 @@ namespace CatHouse_Renewal.Controllers
                 string existPet = Request.Form["existingYN"].ToString();
                 int amount = Convert.ToInt32(Request.Form["amount"]);
 
-                // 기존 동물 여부와 마릿수를 디비에 보내서 가져온다.
-                List<TraderModel> traderlist = selectDB.TraderSelectWithFilter(existPet, amount);
-
-                // 다른 화면으로 전송하기 위한 임시 데이터
-                //TempData["student"] = new Student();
-                //return RedirectToAction("GetStudent", "Student");
-                TempData["trader"] = new List<TraderModel>();
-
                 // 리스트를 검색 결과 화면으로 전송한다.
-                return RedirectToAction("FilterSearchResult", "Search");                
+                //return RedirectToAction("FilterSearchResult", new { existPet = existPet, petNum = amount });
+                return FilterSearchResult(existPet, amount);
             }
             catch (Exception ex)
             {

@@ -86,7 +86,7 @@ namespace CatHouse_Renewal.DB
                 // DB가 데이터를 가지고 있으면 관련된 자료 리턴
                 if (item.HasRows == false)
                 {
-                    // 없으면 에러처리
+                    // 값이 없으면 없다고 리턴해주어야 한다.
                     throw new Exception();
                 }
 
