@@ -178,7 +178,9 @@
     <Content Include="Contents\search_result.css" />
     <Content Include="Other\Temp.txt" />
     <Content Include="Global.asax" />
-    <Content Include="Web.config" />
+    <Content Include="Web.config">
+      <SubType>Designer</SubType>
+    </Content>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="App_Start\RouteConfig.cs" />
@@ -266,6 +268,7 @@
     <Content Include="Views\Home\CommonError.cshtml" />
     <Content Include="Views\Account\PasswordChange.cshtml" />
     <Content Include="Views\Search\FilterSearchResult.cshtml" />
+    <Content Include="Views\Account\InfoChange.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
