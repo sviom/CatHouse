@@ -40,6 +40,12 @@ namespace CatHouse_Renewal.Controllers
             return View();
         }
 
+        // 개인정보 변경 페이지로 이동
+        public  ActionResult InfoChange()
+        {
+            return View();
+        }
+
         //로그인 액션
         [HttpPost]
         // POST : ~~ /Account/BeginLogin
