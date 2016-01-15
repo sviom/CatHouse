@@ -168,6 +168,7 @@
     <Content Include="Contents\Image\selectArrow.png" />
     <Content Include="Contents\Image\speechBalloon.png" />
     <Content Include="Contents\Image\wikiSeoul.png" />
+    <Content Include="Contents\Javascript\jquery-2.2.0.min.js" />
     <Content Include="Contents\login.css" />
     <Content Include="Contents\main.css" />
     <Content Include="Contents\regist.css" />

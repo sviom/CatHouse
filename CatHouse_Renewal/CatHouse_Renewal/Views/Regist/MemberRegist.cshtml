@@ -3,9 +3,8 @@
 <html>
 <head>
     <title></title>
-
-    <script src="//code.jquery.com/jquery-1.11.3.min.js"></script>
-    <script src="//code.jquery.com/jquery-migrate-1.2.1.min.js"></script>
+    
+    <script src="~/Contents/Javascript/jquery-2.2.0.min.js"></script>
 
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" />
     <link rel="stylesheet" type="text/css" href="~/Contents/common.css" />
@@ -15,11 +14,37 @@
     <script src="~/Contents/DaumAddress.js"></script>
     <script src='http://dmaps.daum.net/map_js_init/postcode.v2.js'></script>
     <script src='//apis.daum.net/maps/maps3.js?apikey=b5192e1790c15977e7899894dccac0d7&libraries=services'></script>
-    <script>
+    <script type="text/javascript">
         // Daum 우편 번호 및 주소 검색 서비스 실행
         function maps() {
             getAddressFromDaum();
         }
+        
+        // 각종 항목 검사
+        function CheckForm() {
+            var memName = $("#memberName").val();
+            var memEmail = $("#memberEmail").val();
+            var memPhone = $("#memberPhone").val();
+            // 회원 이름이 비었거나 이메일이  비었거나 다른 항목들이 비었을 때
+            if (memName == "" || memEmail == "" || memPhone == "") {
+                alert("비어있는 항목이 있습니다. 전부 입력해주세요.");
+                return false;
+            } else if (memName == null || memEmail == null || memPhone == null) {
+                alert("비어있는 항목이 있습니다. 전부 입력해주세요.");
+                return false;
+            }
+        }
+
+        $(document).ready(function () {
+            alert("새로운 시작");
+            $('#btn_regist').click(function () {
+                alert("클릭으로 들어감");
+                if (CheckForm() == true) {
+                    alert("성공");
+                    $('#MemberCreateForm').submit();
+                }
+            });
+        });
     </script>
 </head>
 <body>
@@ -30,11 +55,11 @@
     </header>
 
     <section id="contents">
-        @using (Html.BeginForm("MemberCreate", "Regist", FormMethod.Post, htmlAttributes: new { @class = "pt10 pb10 mb20" }))
+        @using (Html.BeginForm("MemberCreate", "Regist", FormMethod.Post, htmlAttributes: new { id = "MemberCreateForm", @class = "pt10 pb10 mb20" }))
         {
-            <p><span class="formLabel">이름</span><input type="text" class="formInput t2" name="memName" /></p>
-            <p><span class="formLabel">이메일</span><input type="email" class="formInput t2" name="memEmail" /></p>
-            <p><span class="formLabel">전화번호</span><input type="tel" class="formInput t2" name="memPhone" /></p>
+            <p><span class="formLabel">이름</span><input type="text" id="memberName" class="formInput t2" name="memName" /></p>
+            <p><span class="formLabel">이메일</span><input type="email" id="memberEmail" class="formInput t2" name="memEmail" /></p>
+            <p><span class="formLabel">전화번호</span><input type="tel" id="memberPhone" class="formInput t2" name="memPhone" /></p>
             @*<p><span class="formLabel">집주소</span><input type="text" class="formInput t4" name="memAddress" /></p><span onclick="maps()">주소 찾기</span>*@
 
             <!--예제-->
