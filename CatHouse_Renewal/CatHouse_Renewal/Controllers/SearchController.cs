@@ -35,13 +35,22 @@ namespace CatHouse_Renewal.Controllers
 
         // 조건 검색 결과 화면으로 이동
         [HttpPost,ActionName("FilterSearchResult")]
-        public ActionResult FilterSearchResult(string existPet, int petNum)
+        public ActionResult FilterSearchResult()//string existPet, int petNum
         {
             try
             {
-                // 기존 동물 여부와 마릿수를 디비에 보내서 가져온다.
-                List<TraderModel> traderlist = selectDB.TraderSelectWithFilter(existPet, petNum);
-                return View();
+                // 여러가지 조건이 있지만 일단 기존 동물 여부와 마릿수에 대한 것만 검색해서 넘겨준다.
+                string existPet1 = Request.Form["existingYN"].ToString();
+                int amount1 = Convert.ToInt32(Request.Form["amount"]);
+
+                // 업자의 정보를 전부 가져온다. --> FilterSearchView라는 모델로 받아온다.
+                List<FilterSearchView> traderlist = selectDB.TraderSelectWithFilter(existPet1, amount1);
+                if(traderlist == null)
+                {
+                    throw new Exception();
+                }
+                // 해당 업자의 정보 중에서 
+                return View(traderlist);
             }
             catch(Exception ex)
             {
@@ -90,8 +99,8 @@ namespace CatHouse_Renewal.Controllers
                 int amount = Convert.ToInt32(Request.Form["amount"]);
 
                 // 리스트를 검색 결과 화면으로 전송한다.
-                //return RedirectToAction("FilterSearchResult", new { existPet = existPet, petNum = amount });
-                return FilterSearchResult(existPet, amount);
+                return RedirectToAction("FilterSearchResult", new { existPet = existPet, petNum = amount });
+                //FilterSearchResult(existPet, amount);
             }
             catch (Exception ex)
             {
