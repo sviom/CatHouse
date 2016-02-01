@@ -8,10 +8,36 @@
 <head>
     <meta name="viewport" content="width=device-width" />
     <title></title>
+    <script src="//code.jquery.com/jquery-1.11.3.min.js"></script>
+    <script src="//code.jquery.com/jquery-migrate-1.2.1.min.js"></script>
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" />
+    <link rel="stylesheet" type="text/css" href="~/Contents/common.css" />
+    <link rel="stylesheet" type="text/css" href="~/Contents/registSub.css" />
+
+    <script src="~/Contents/common.js"></script>
 </head>
 <body>
-    <div>
-    
-    </div>
+    <!--Header Include-->
+    @{Html.RenderPartial("header");}
+
+    <section id="visual"> <img src="~/Contents/Image/pawbubble.png" /> <span style="font-weight: bold;">당신의 정보</span>를 관리하세요.</section>
+    </header>
+
+    <section id="contents">
+        @using (Html.BeginForm("", "", FormMethod.Post, htmlAttributes: new { @class = "pt10 pb10 mb20" }))
+        {
+            @*<form id="frm" class="pt10 pb10 mb20">*@
+            <p><span class="formLabel">주소</span><input type="password" class="formInput t2" name="oldPassword" /></p>
+            <p><span class="formLabel"></span><input type="password" class="formInput t2" name="newPassword" /></p>
+            <p><span class="formLabel">새비밀번호 확인</span><input type="password" class="formInput t2" name="newPassword_Again" /></p>
+            <button id="btn_regist" class="btn btn_blue">비밀번호 변경</button>
+            @*</form>*@
+        }
+        @*<button id="btn_regist" class="btn btn_blue" onclick="location.href='@Url.Action("MemberCreate", "Regist")'">회원등록</button>*@
+    </section>
+
+    <!--Footer Include-->
+    @{Html.RenderPartial("footer");}
 </body>
 </html>

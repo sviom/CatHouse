@@ -27,7 +27,7 @@
     </header>
     <!--콘텐츠 표시-->
     <section id="contents">
-        <div class="box1">
+        @*<div class="box1">
             <span class="title">정보 변경</span>
             <div id="box_registGeneral" class="innerBox1">
                 <span class="innerTitle">비밀번호 바꾸기</span>
@@ -35,10 +35,19 @@
                 <button class="btn btn_blue" type="button" title="일반회원등록" onclick="location.href='@Url.Action("PasswordChange", "Account")'">비밀번호 변경</button>
             </div>
             <div id="box_registHouse" class="innerBox1">
-                <span class="innerTitle">기타 변경</span>
-                다른 정보를 변경하세요.
-                <button class="btn btn_blue" type="button" title="업체회원등록" onclick="location.href='@Url.Action("MemberDrop", "Account")'">정보 변경</button>
+                <span class="innerTitle">사람</span>
+                당신의 정보를 변경하세요.
+                <button class="btn btn_blue" type="button" title="업체회원등록" onclick="location.href='@Url.Action("InfoChange", "Account")'">정보 변경</button>
             </div>
+            <div id="box_registHouse" class="innerBox1">
+                <span class="innerTitle">고양이</span>
+                고양이는 어떻게 바뀌었나요?
+                <button class="btn btn_blue" type="button" title="업체회원등록" onclick="location.href='@Url.Action("InfoChange", "Account")'">정보 변경</button>
+            </div>
+        </div>*@
+
+        <div>
+
         </div>
         <div class="box2">
             <span class="title">회원탈퇴</span>

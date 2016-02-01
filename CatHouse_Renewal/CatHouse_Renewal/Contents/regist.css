@@ -13,43 +13,50 @@
 #contents > div {
     display: inline-block;
     vertical-align: top;
-    
     height: 280px;
-    
     margin: 100px 0px;
-    
     background-color: #FFFFFF;
     border: 1px solid #DEDEDE;
     border-top: 2px solid #26a8d4;
-    
     font-size: 18px;
     color: #666666;
 }
+
 @media all and (max-width: 959px) {
-    #contents > div { height: auto; margin: 10px auto; }
+    #contents > div {
+        height: auto;
+        margin: 10px auto;
+    }
 }
 
-div.box1 { width: 520px; }
-div.box2 { width: 420px; }
+div.box1 {
+    width: 520px;
+}
+
+div.box2 {
+    width: 420px;
+}
 
 @media all and (max-width: 959px) {
-    div.box1, div.box2 { width: 90%; }
+    div.box1, div.box2 {
+        width: 90%;
+    }
 }
 
 #contents .title {
     font-size: 24px;
     color: #333333;
-    
     display: block;
     width: 90%;
-    
     margin: auto;
     padding: 20px 0px;
-    
     border-bottom: 2px solid #3F5157;
 }
 
-#contents .innerBox1, #contents .innerBox2 { height: 180px; margin: 15px auto;}
+#contents .innerBox1, #contents .innerBox2 {
+    height: 180px;
+    margin: 15px auto;
+}
 
 #contents .innerBox1 {
     width: 45%;
@@ -67,7 +74,6 @@ div.box2 { width: 420px; }
 #contents .innerBox1 .innerTitle {
     font-size: 22px;
     color: #26A8D4;
-    
     display: block;
 }
 
@@ -75,6 +81,10 @@ div.box2 { width: 420px; }
     line-height: 120px;
 }
 
-#contents button { margin: auto; }
-#contents .innerBox1 button { margin-top: 20px; }
+#contents button {
+    margin: auto;
+}
 
+#contents .innerBox1 button {
+    margin-top: 20px;
+}
