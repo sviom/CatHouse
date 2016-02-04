@@ -17,6 +17,19 @@
     <link rel="stylesheet" type="text/css" href="~/Contents/registSub.css" />
 
     <script src="~/Contents/common.js"></script>
+
+    <!--다음 관련해서 주소/지도 서비스를 이용하는 JS-->
+    <script src="~/Contents/DaumAddress.js"></script>
+    <script src='http://dmaps.daum.net/map_js_init/postcode.v2.js'></script>
+    <script src='//apis.daum.net/maps/maps3.js?apikey=b5192e1790c15977e7899894dccac0d7&libraries=services'></script>
+
+    <script type="text/javascript">
+        // Daum 우편 번호 및 주소 검색 서비스 실행
+        function maps() {
+            getAddressFromDaum();
+        }
+
+    </script>
 </head>
 <body>
     <!--Header Include-->
@@ -31,16 +44,18 @@
             // 도로명 주소 우선으로 출력한다. 없으면 지번 주소, 그것도 없으면 주소가 존재하지 않음으로 출력
             if (!string.IsNullOrEmpty(Model.roadAddress))
             {
-                <p><span class="formLabel">주 소</span><input type="text" class="formInput t2" name="oldPassword" value="@Model.roadAddress" /></p>
+                <p><span class="formLabel">주 소</span><input type="text" class="formInput t2" name="roadAddress" value="@Model.roadAddress" /></p>
             }
             else if (!string.IsNullOrEmpty(Model.mapAddress))
             {
-                <p><span class="formLabel">주 소</span><input type="text" class="formInput t2" name="oldPassword" value="@Model.mapAddress" /></p>
+                <p><span class="formLabel">주 소</span><input type="text" class="formInput t2" name="mapAddress" value="@Model.mapAddress" /></p>
             }
             else
             {
-                <p><span class="formLabel">주 소</span><input type="text" class="formInput t2" name="oldPassword" value="주소가 존재하지 않습니다." /></p>
+                <p><span class="formLabel">주 소</span><input type="text" class="formInput t2" name="mapAddress" value="주소가 존재하지 않습니다." /></p>
             }
+            <input type="button" onclick="maps()" value="우편번호 찾기"><br>
+
             <p><span class="formLabel">휴대폰 번호</span><input type="text" class="formInput t2" name="viewMemberPhone" value="@Session["MemberPhone"]" /></p>
             <button id="btn_regist" class="btn btn_blue">정보 변경</button>
         }

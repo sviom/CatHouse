@@ -36,11 +36,8 @@
         }
 
         $(document).ready(function () {
-            alert("새로운 시작");
             $('#btn_regist').click(function () {
-                alert("클릭으로 들어감");
                 if (CheckForm() == true) {
-                    alert("성공");
                     $('#MemberCreateForm').submit();
                 }
             });
@@ -62,13 +59,11 @@
             <p><span class="formLabel">전화번호</span><input type="tel" id="memberPhone" class="formInput t2" name="memPhone" /></p>
             @*<p><span class="formLabel">집주소</span><input type="text" class="formInput t4" name="memAddress" /></p><span onclick="maps()">주소 찾기</span>*@
 
-            <!--예제-->
             <input type="text" name="postCode" id="postCode" placeholder="우편번호">
             <input type="button" onclick="maps()" value="우편번호 찾기"><br>
             <input type="text" name="roadAddress" id="roadAddress" placeholder="도로명주소">
             <input type="text" name="mapAddress" id="mapAddress" placeholder="지번주소">
             <input type="text" name="coordinate" id="coordinate" hidden="hidden"/>      // 좌표
-            <!--예제 끝-->
 
             <p><span class="formLabel">비밀번호</span><input type="password" class="formInput t2" name="memPassword" /></p>
             <button id="btn_regist" class="btn btn_blue">회원등록</button>

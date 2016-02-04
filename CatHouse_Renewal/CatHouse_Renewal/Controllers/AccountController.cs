@@ -87,7 +87,7 @@ namespace CatHouse_Renewal.Controllers
             catch (Exception ex)
             {
                 ex.Message.ToString();
-                return RedirectToAction("Index", "Home");
+                return RedirectToAction("CommonError", "Home");
             }
         }
 
@@ -104,11 +104,11 @@ namespace CatHouse_Renewal.Controllers
             }
             catch (Exception ex)
             {
-                return RedirectToAction("Index", "Home");
+                return RedirectToAction("CommonError", "Home");
             }
         }
 
-        // 회원 탈퇴 액션
+        // 회원 탈퇴
         [ActionName("MemberDrop")]
         public ActionResult MemberDrop()
         {
@@ -166,7 +166,7 @@ namespace CatHouse_Renewal.Controllers
             catch(Exception ex)
             {
                 ex.Message.ToString();
-                return RedirectToAction("Index", "Home");
+                return RedirectToAction("CommonError", "Home");
             }
         }
     }
