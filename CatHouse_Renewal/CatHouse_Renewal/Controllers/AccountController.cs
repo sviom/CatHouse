@@ -19,6 +19,8 @@ namespace CatHouse_Renewal.Controllers
         RemoveDB deleteMethod = new RemoveDB();
         // 회원 정보 및 기타 업데이트 관련 
         UpdateDB updateMethod = new UpdateDB();
+        // 정보 SELECT 관련
+        SelectDB selectMethod = new SelectDB();
         // 점검 관련 함수들 모음
         Check check = new Check();
 
@@ -41,9 +43,18 @@ namespace CatHouse_Renewal.Controllers
         }
 
         // 개인정보 변경 페이지로 이동
-        public  ActionResult InfoChange()
+        public ActionResult InfoChange()
         {
-            return View();
+            try
+            {
+                HomeModel memberAddress = selectMethod.GetMemberAddress(Convert.ToInt32(Session["MemberID"]), Session["MemberEmail"].ToString());
+                return View(memberAddress);
+            }
+            catch (Exception ex)
+            {
+                ex.Message.ToString();
+                return View();
+            }
         }
 
         //로그인 액션
@@ -69,6 +80,8 @@ namespace CatHouse_Renewal.Controllers
                 // 관련 항목(로그인버튼/이름) 매칭
                 Session["MemberID"] = loginQuery.MemberID;
                 Session["MemberName"] = loginQuery.MemberName;
+                Session["MemberEmail"] = loginQuery.MemberEmail;
+                Session["MemberPhone"] = loginQuery.MemberPhone;
                 return RedirectToAction("Index", "Home");
             }
             catch (Exception ex)

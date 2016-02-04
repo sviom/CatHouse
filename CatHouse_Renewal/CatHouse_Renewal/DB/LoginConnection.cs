@@ -32,7 +32,7 @@ namespace CatHouse_Renewal.DB
                     conn.Open();
                 }
                 // 고유아이디/이름/나이/성별/중성화상태/사진/상태메모
-                string query = "SELECT memID, memName, memPassword FROM dbo.Member WHERE memEmail = '" + memEmail + "' AND memPassword = '" + memPassword + "';";
+                string query = "SELECT * FROM dbo.Member WHERE memEmail = '" + memEmail + "' AND memPassword = '" + memPassword + "';";
 
                 // SQL Command를 작성해서, 실행
                 SqlCommand sqlQuery = new SqlCommand(query, conn);
@@ -48,6 +48,8 @@ namespace CatHouse_Renewal.DB
                 {
                     sessionData.MemberID = Convert.ToInt32(item["memID"]);
                     sessionData.MemberName = item["memName"].ToString();
+                    sessionData.MemberEmail = item["memEmail"].ToString();
+                    sessionData.MemberPhone = Convert.ToInt32(item["memPhone"]);
                 }
                 db.DbClose();
                 
@@ -64,6 +66,8 @@ namespace CatHouse_Renewal.DB
         {
             public string MemberName { get; set; }
             public int MemberID { get; set; }
+            public string MemberEmail { get; set; }
+            public int MemberPhone { get; set; }
         }
     }
 }

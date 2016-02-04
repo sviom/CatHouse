@@ -2,6 +2,7 @@
 using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
+using System.Data;
 using System.Data.SqlClient;
 using System.Linq;
 using System.Web;
@@ -121,6 +122,52 @@ namespace CatHouse_Renewal.DB
             catch (Exception ex)
             {
                 ex.Message.ToString();
+                return null;
+            }
+        }
+
+        // 집 주소 가져오기
+        public HomeModel GetMemberAddress(int memId, string memEmail)
+        {
+            try
+            {
+                conn = db.DbOpen();
+                //열려 있으면 사용한다.
+                if (conn.State.ToString() != "Open")
+                {
+                    conn.Open();
+                }
+
+                // 커맨드 생성 / 프로시저는 멤버 정보 갖고 오는거
+                SqlCommand sqlQuery = new SqlCommand("P_GET_MEMBER_ADDRESS", conn);
+                sqlQuery.CommandType = CommandType.StoredProcedure;
+                // 커맨드에 파라미터 추가 (MemID)
+                sqlQuery.Parameters.AddWithValue("@memId", memId);
+                sqlQuery.Parameters.AddWithValue("@memEmail", memEmail);
+
+                SqlDataReader item = sqlQuery.ExecuteReader();
+                // DB가 데이터를 가지고 있으면 관련된 자료 리턴
+                if (item.HasRows == false)
+                {
+                    // 없으면 에러처리
+                    throw new Exception();
+                }
+
+                // 컨트롤러 쪽으로 넘겨줄 객체 생성
+                HomeModel memAddress = new HomeModel();
+                // 데이터를 전부 읽어들이면서 좌표값을 읽어온다.
+                while (item.Read())
+                {
+                    memAddress = JsonConvert.DeserializeObject<HomeModel>(item["memAddress"].ToString());
+                }
+                db.DbClose();
+                // 좌표값 리턴
+                return memAddress;
+
+            }
+            catch (SqlException sqlEx)
+            {
+                sqlEx.Message.ToString();
                 return null;
             }
         }
