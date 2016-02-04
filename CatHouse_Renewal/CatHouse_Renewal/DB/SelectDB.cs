@@ -171,5 +171,47 @@ namespace CatHouse_Renewal.DB
                 return null;
             }
         }
+
+        public bool CheckTrader(int memId)
+        {
+            try
+            {
+                conn = db.DbOpen();
+                //열려 있으면 사용한다.
+                if (conn.State.ToString() != "Open")
+                {
+                    conn.Open();
+                }
+
+                // 커맨드 생성 / 프로시저는 멤버 정보 갖고 오는거
+                SqlCommand sqlQuery = new SqlCommand("P_GET_MEMBER_ADDRESS", conn);
+                sqlQuery.CommandType = CommandType.StoredProcedure;
+                // 커맨드에 파라미터 추가 (MemID)
+                sqlQuery.Parameters.AddWithValue("@memId", memId);
+
+                SqlDataReader item = sqlQuery.ExecuteReader();
+                // DB가 데이터를 가지고 있으면 관련된 자료 리턴
+                if (item.HasRows == false)
+                {
+                    // 없으면 업자가 아님
+                    bool closeCheck = db.DbClose();
+                    if (!closeCheck)
+                    {
+                        throw new Exception();
+                    }
+                    return true;
+                }
+
+                db.DbClose();
+                // 좌표값 리턴
+                return false;
+
+            }
+            catch (SqlException sqlEx)
+            {
+                sqlEx.Message.ToString();
+                return false;
+            }
+        }
     }
 }

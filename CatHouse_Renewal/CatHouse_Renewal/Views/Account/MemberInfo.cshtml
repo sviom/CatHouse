@@ -16,7 +16,18 @@
     <link rel="stylesheet" type="text/css" href="~/Contents/regist.css" />
     
     <script src="~/Contents/common.js"></script>
+    <script type="text/javascript">
+        // 회원 탈퇴 시 다시한번 체크하는 함수
+        function memberDrop() {
+            var memberdDropCheck = confirm("정말로 탈퇴 하실거에요?");
+            if (memberdDropCheck) {
+                window.location.href = '@Url.Action("MemberDrop", "Account")';
+            } else {
+                alert("휴, 정말 다행이에요.");
+            }
 
+        }
+    </script>
 </head>
 <body>
     <!--Header Include-->
@@ -48,7 +59,7 @@
             <span class="title">회원탈퇴</span>
             <div id="box_registCat" class="innerBox2">
                 아쉽지만 다음에 만나요!
-                <button class="btn btn_dark" type="button" title="업체회원등록" onclick="location.href='@Url.Action("MemberDrop", "Account")'">회원 탈퇴</button>
+                <button class="btn btn_dark" type="button" title="업체회원등록" onclick="memberDrop()">회원 탈퇴</button>
             </div>
         </div>
     </section>

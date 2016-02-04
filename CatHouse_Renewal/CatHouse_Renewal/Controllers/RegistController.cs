@@ -25,6 +25,8 @@ namespace CatHouse_Renewal.Controllers
         LoginConnection loginConn = new LoginConnection();
         // Insert 관련 함수들 모음
         InsertDB insertDB = new InsertDB();
+        // SELECT 관련 함수들 모음
+        SelectDB selectMethod = new SelectDB();
         // 점검 관련 함수들 모음
         Check check = new Check();
 
@@ -81,6 +83,12 @@ namespace CatHouse_Renewal.Controllers
                 if (Convert.ToInt32(Session["MemberID"]) <= 0)
                 {
                     throw new Exception();
+                }
+                // 또는 이미 업자로 등록되어 있으면 등록되어 있다로 해야함
+                if (selectMethod.CheckTrader(Convert.ToInt32(Session["MemberID"])))
+                {
+                    // 여기에 메시지를 담아서 View로 던져서 View에서 Alert를 띄울 수 있도록 해야함
+                    return View();
                 }
                 return View();
             }
