@@ -147,6 +147,7 @@
     <Content Include="Contents\Image\callout.png" />
     <Content Include="Contents\Image\close.png" />
     <Content Include="Contents\Image\exterior.png" />
+    <Content Include="Contents\Image\favicon.ico" />
     <Content Include="Contents\Image\gnb_on.png" />
     <Content Include="Contents\Image\login.png" />
     <Content Include="Contents\Image\logo.png" />
