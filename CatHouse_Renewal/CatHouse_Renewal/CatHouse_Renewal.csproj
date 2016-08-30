@@ -261,6 +261,8 @@
     <Content Include="Views\Regist\MemberRegist.cshtml" />
     <Content Include="Views\Regist\TraderRegist.cshtml" />
     <Content Include="Views\Intro\About.cshtml" />
+    <None Include="Properties\PublishProfiles\cathouse3 - FTP.pubxml" />
+    <None Include="Properties\PublishProfiles\cathouse3 - Web Deploy.pubxml" />
     <None Include="Properties\PublishProfiles\cathouse3.pubxml" />
     <Content Include="Views\Search\MapFinder.cshtml" />
     <Content Include="Views\Search\FilterFinder.cshtml" />
