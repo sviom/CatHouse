@@ -263,7 +263,6 @@
     <Content Include="Views\Intro\About.cshtml" />
     <None Include="Properties\PublishProfiles\cathouse3 - FTP.pubxml" />
     <None Include="Properties\PublishProfiles\cathouse3 - Web Deploy.pubxml" />
-    <None Include="Properties\PublishProfiles\cathouse3.pubxml" />
     <Content Include="Views\Search\MapFinder.cshtml" />
     <Content Include="Views\Search\FilterFinder.cshtml" />
     <Content Include="Views\Regist\Registered.cshtml" />
