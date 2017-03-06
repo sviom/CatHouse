@@ -197,3 +197,4 @@ FakesAssemblies/
 
 # Web.config secure
 Web.config
+Web.*.config
