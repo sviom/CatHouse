@@ -277,6 +277,7 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Web.config" />
+    <None Include="Properties\PublishProfiles\CatHouse - Web Deploy.pubxml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
